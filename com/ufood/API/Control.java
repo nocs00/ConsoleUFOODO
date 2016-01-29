@@ -5,12 +5,18 @@ package com.ufood.API;
  */
 import com.ufood.DB.Constants;
 import com.ufood.DB.DBDriver;
+import com.ufood.Model.Dish;
 import com.ufood.Model.FoodItem;
 import com.ufood.util.Engine;
 import com.ufood.Model.Result;
 import com.ufood.Model.Task;
+import org.bson.Document;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
+import static com.ufood.DB.Constants.*;
+
 import static com.ufood.API.APIConstants.*;
 
 
@@ -61,17 +67,19 @@ public class Control {
     public String addFoodItem(
             FoodItem pojo
     ) {
-        DBDriver.getDBDriver().insert(Constants.FOOD_COLLECTION, pojo.getDocument());
-        
+        DBDriver.getDBDriver().insert(FOOD_COLLECTION, pojo.getDocument());
+
         return "food item inserted";
     }
 
     @Path(ADMIN+ADD_DISH)
-    @GET
+    @PUT
     @Produces("text/plain")
     public String addDish(
-            //Dish POJO
+            Dish pojo
     ) {
+        DBDriver.getDBDriver().insert(DISH_COLLECTION, pojo.getDocument());
+
         return "dish inserted";
     }
 
@@ -79,13 +87,39 @@ public class Control {
     @GET
     @Produces("text/plain")
     public String getFoodItems() {
-        return "list of all food items";
+        List<Document> docs = DBDriver.getDBDriver().selectAll(FOOD_COLLECTION);
+        Document rootDoc = new Document(FOOD_COLLECTION, docs);
+
+        return rootDoc.toJson();
+    }
+
+    @Path(ADMIN+GET_FOODITEM_BY_NAME)
+    @PUT
+    @Produces("text/plain")
+    @Consumes("text/plain")
+    public String getFoodItemByName(
+            String name
+    ) {
+        return FoodItem.getFoodItemByName(name).getDocument().toJson();
     }
 
     @Path(ADMIN+GET_DISHES)
     @GET
     @Produces("text/plain")
     public String getDishes() {
-        return "list of all dishes";
+        List<Document> docs = DBDriver.getDBDriver().selectAll(DISH_COLLECTION);
+        Document rootDoc = new Document(DISH_COLLECTION, docs);
+
+        return rootDoc.toJson();
+    }
+
+    @Path(ADMIN+GET_DISH_BY_NAME)
+    @PUT
+    @Produces("text/plain")
+    @Consumes("text/plain")
+    public String getDishByName(
+            String name
+    ) {
+        return Dish.getFoodItemByName(name).getDocument().toJson();
     }
 }

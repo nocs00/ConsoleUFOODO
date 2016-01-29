@@ -30,13 +30,13 @@ public class DBDriver implements DBInterface { //singleton
     }
 
     @Override
-    public FindIterable<Document> selectAll(String from) {
-        return DB.getCollection(from).find();
+    public ArrayList<Document> selectAll(String from) {
+        return iterableToList(DB.getCollection(from).find());
     }
 
     @Override
-    public FindIterable<Document> selectAll(String from, Object content) {
-        return DB.getCollection(from).find((Document)content);
+    public ArrayList<Document> selectAll(String from, Object content) {
+        return iterableToList(DB.getCollection(from).find((Document)content));
     }
 
     @Override
