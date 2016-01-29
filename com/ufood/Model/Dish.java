@@ -14,6 +14,39 @@ public class Dish extends FoodItem implements Documentable {
     private double carbohydrate;
     private double fat;
 
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HashMap<FoodItem, Double> getFoodItems() {
+        return foodItems;
+    }
+
+    public void setFoodItems(HashMap<FoodItem, Double> foodItems) {
+        this.foodItems = foodItems;
+    }
+
+    @Override
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
+    @Override
+    public void setProtein(double protein) {
+        this.protein = protein;
+    }
+
+    @Override
+    public void setCarbohydrate(double carbohydrate) {
+        this.carbohydrate = carbohydrate;
+    }
+
+    @Override
+    public void setFat(double fat) {
+        this.fat = fat;
+    }
+
     public Dish(String name) {
         this.calories = 0;
         this.protein = 0;

@@ -13,6 +13,26 @@ public class FoodItem implements Documentable {
     private double carbohydrate;
     private double fat;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCalories(double calories) {
+        this.calories = calories;
+    }
+
+    public void setProtein(double protein) {
+        this.protein = protein;
+    }
+
+    public void setCarbohydrate(double carbohydrate) {
+        this.carbohydrate = carbohydrate;
+    }
+
+    public void setFat(double fat) {
+        this.fat = fat;
+    }
+
     public FoodItem (Document bson) {
         name = bson.get("name").toString();
         calories = new Double(bson.get("calories").toString());
