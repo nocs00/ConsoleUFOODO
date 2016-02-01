@@ -93,6 +93,7 @@ public class Dish extends FoodItem implements Documentable {
         FoodItem food = null;
         boolean isName = true;
         //test ignore
+        //test ignore2
         for (int i = 0; i < foods.size(); i++) {
             Double count = 1d; //default
             if (isName) { //name processing

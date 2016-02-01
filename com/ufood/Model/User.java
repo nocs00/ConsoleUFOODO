@@ -11,6 +11,12 @@ import static com.ufood.DB.Constants.*;
  */
 public class User implements Documentable {
     private String userID;
+    private SEX sex = SEX.MALE;
+    private int age = 25;
+    private double height = 175d;
+    private double weight = 75d;
+    private ACTIVITY_LEVEL activity_level = ACTIVITY_LEVEL.LIGHT;
+    private BODY_TYPE body_type = BODY_TYPE.NORMAL;
 
 //    public User(String userID) {
 //        this.userID = userID;

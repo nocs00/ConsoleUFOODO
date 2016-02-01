@@ -10,6 +10,7 @@ public abstract class Constants {
     public final static String USER_ID = "user_id";
     public static enum SEX {MALE, FEMALE};
     public static enum ACTIVITY_LEVEL {SEDENTARY, LIGHT, MODERATE, HIGH, EXTRA_HIGH};
+    public static enum BODY_TYPE {FAT, NORMAL, ATHLETE, THIN};
 
     /**********Multipliers for BMR (Basal Metabolic Rate)
      ** Sedentary - little or no excercise      - 1.2

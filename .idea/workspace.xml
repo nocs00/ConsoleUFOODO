@@ -29,8 +29,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/ufood/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="765">
-              <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+              <caret line="27" column="85" selection-start-line="27" selection-start-column="85" selection-end-line="27" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -39,11 +39,49 @@
       <file leaf-file-name="Control.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/ufood/API/Control.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1281" max-vertical-offset="2091">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1293" max-vertical-offset="2091">
               <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/com/ufood/Model/Task.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="17" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#628#629#0" expanded="true" />
+                <element signature="e#654#655#0" expanded="true" />
+                <element signature="e#689#690#0" expanded="true" />
+                <element signature="e#719#720#0" expanded="true" />
+                <element signature="e#752#753#0" expanded="true" />
+                <element signature="e#781#782#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
+                <element signature="e#861#862#0" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#923#924#0" expanded="true" />
+                <element signature="e#967#968#0" expanded="true" />
+                <element signature="e#1003#1004#0" expanded="true" />
+                <element signature="e#1052#1053#0" expanded="true" />
+                <element signature="e#1089#1090#0" expanded="true" />
+                <element signature="e#1914#1915#0" expanded="true" />
+                <element signature="e#1946#1947#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/com/ufood/Model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6010101" vertical-offset="0" max-vertical-offset="663">
+              <caret line="25" column="117" selection-start-line="25" selection-start-column="117" selection-end-line="25" selection-end-column="117" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,25 +109,10 @@
       <file leaf-file-name="Dish.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/ufood/Model/Dish.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="2873">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2856">
+              <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
               <folding>
-                <element signature="e#487#488#0" expanded="true" />
-                <element signature="e#519#520#0" expanded="true" />
                 <element signature="e#1431#1437#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBDriver.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/com/ufood/DB/DBDriver.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="236" max-vertical-offset="1122">
-              <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
-              <folding>
-                <element signature="e#860#861#0" expanded="true" />
-                <element signature="e#928#929#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,18 +121,18 @@
       <file leaf-file-name="DBInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/ufood/DB/DBInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="340">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
               <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="APIConstants.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="APIConstants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/ufood/API/APIConstants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45791245" vertical-offset="0" max-vertical-offset="594">
-              <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -128,8 +151,8 @@
       <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/com/ufood/DB/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="83" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+              <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -142,8 +165,6 @@
       <list>
         <option value="$PROJECT_DIR$/com/ufood/Model/Result.java" />
         <option value="$PROJECT_DIR$/com/ufood/Model/Menu.java" />
-        <option value="$PROJECT_DIR$/com/ufood/Model/Task.java" />
-        <option value="$PROJECT_DIR$/com/ufood/DB/Constants.java" />
         <option value="$PROJECT_DIR$/com/ufood/util/Engine.java" />
         <option value="$PROJECT_DIR$/com/ufood/Main.java" />
         <option value="$PROJECT_DIR$/com/ufood/DB/DBDriver.java" />
@@ -151,6 +172,9 @@
         <option value="$PROJECT_DIR$/com/ufood/API/Control.java" />
         <option value="$PROJECT_DIR$/com/ufood/Model/FoodItem.java" />
         <option value="$PROJECT_DIR$/com/ufood/Model/Dish.java" />
+        <option value="$PROJECT_DIR$/com/ufood/DB/Constants.java" />
+        <option value="$PROJECT_DIR$/com/ufood/Model/Task.java" />
+        <option value="$PROJECT_DIR$/com/ufood/Model/User.java" />
       </list>
     </option>
   </component>
@@ -611,16 +635,16 @@
       <workItem from="1453823575040" duration="1489000" />
       <workItem from="1454084778018" duration="1838000" />
       <workItem from="1454322989254" duration="146000" />
-      <workItem from="1454323138291" duration="134000" />
+      <workItem from="1454323138291" duration="2907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25762000" />
+    <option name="totallyTimeSpent" value="28535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -634,7 +658,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32972974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24973376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -679,16 +703,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/com/ufood/API/Control.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2091">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/ufood/Model/FoodItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1445">
@@ -712,8 +726,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="2873">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
             <element signature="e#1431#1437#0" expanded="true" />
           </folding>
         </state>
@@ -803,8 +815,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3077">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
             <element signature="e#1431#1437#0" expanded="true" />
           </folding>
         </state>
@@ -914,8 +924,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
             <element signature="e#1431#1437#0" expanded="true" />
           </folding>
         </state>
@@ -926,10 +934,23 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1156">
           <caret line="55" column="61" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
           <folding>
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -984,8 +1005,6 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2193">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
             <element signature="e#1431#1437#0" expanded="true" />
           </folding>
         </state>
@@ -996,10 +1015,23 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1156">
           <caret line="55" column="61" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="61" />
           <folding>
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1049,39 +1081,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/ufood/Model/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="1224">
-          <caret line="59" column="32" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
-          <folding>
-            <element signature="e#1310#1311#0" expanded="true" />
-            <element signature="e#1342#1343#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-            <element signature="e#1825#1826#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/com/ufood/Model/Result.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="629">
           <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/ufood/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1" max-vertical-offset="765">
-          <caret line="21" column="37" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/ufood/DB/DBInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1093,14 +1096,6 @@
             <element signature="e#860#861#0" expanded="true" />
             <element signature="e#928#929#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/com/ufood/util/Engine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="2805">
-          <caret line="126" column="54" selection-start-line="126" selection-start-column="54" selection-end-line="126" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,13 +1117,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/com/ufood/API/APIConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/ufood/DB/DBInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/ufood/util/Engine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="2805">
+          <caret line="126" column="54" selection-start-line="126" selection-start-column="54" selection-end-line="126" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/com/ufood/Model/Dish.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1003" max-vertical-offset="2856">
+          <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
           <folding>
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#519#520#0" expanded="true" />
             <element signature="e#1431#1437#0" expanded="true" />
           </folding>
         </state>
@@ -1136,7 +1153,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/ufood/API/Control.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1281" max-vertical-offset="2091">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1293" max-vertical-offset="2091">
           <caret line="95" column="16" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1146,16 +1163,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/com/ufood/DB/Constants.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="442">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="83" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+          <caret line="11" column="85" selection-start-line="11" selection-start-column="85" selection-end-line="11" selection-end-column="85" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/com/ufood/API/APIConstants.java">
+    <entry file="file://$PROJECT_DIR$/com/ufood/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45791245" vertical-offset="0" max-vertical-offset="594">
-          <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="27" column="85" selection-start-line="27" selection-start-column="85" selection-end-line="27" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/ufood/Model/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2618">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="17" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+            <element signature="e#719#720#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#861#862#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#923#924#0" expanded="true" />
+            <element signature="e#967#968#0" expanded="true" />
+            <element signature="e#1003#1004#0" expanded="true" />
+            <element signature="e#1052#1053#0" expanded="true" />
+            <element signature="e#1089#1090#0" expanded="true" />
+            <element signature="e#1914#1915#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/ufood/Model/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6010101" vertical-offset="0" max-vertical-offset="663">
+          <caret line="25" column="117" selection-start-line="25" selection-start-column="117" selection-end-line="25" selection-end-column="117" />
           <folding />
         </state>
       </provider>
