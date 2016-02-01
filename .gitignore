@@ -48,7 +48,10 @@ Temporary Items
 
 
 .idea/
+/.idea
+
 out/
+/out
 
 *.iml
 *.class
