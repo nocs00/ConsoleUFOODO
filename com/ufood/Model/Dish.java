@@ -14,7 +14,6 @@ public class Dish extends FoodItem implements Documentable {
     private double carbohydrate;
     private double fat;
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -93,6 +92,7 @@ public class Dish extends FoodItem implements Documentable {
         ArrayList foods = (ArrayList)dishDocument.get(FOOD_COLLECTION);
         FoodItem food = null;
         boolean isName = true;
+        //test ignore
         for (int i = 0; i < foods.size(); i++) {
             Double count = 1d; //default
             if (isName) { //name processing
