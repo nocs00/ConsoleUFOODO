@@ -103,6 +103,18 @@ public class Control {
         return FoodItem.getFoodItemByName(name).getDocument().toJson();
     }
 
+    @Path(ADMIN+GET_FOODITEM_BY_NAME_LIKE)
+    @PUT
+    @Produces("text/plain")
+    @Consumes("text/plain")
+    public String getFoodItemByNameLike(
+            String name
+    ) {
+        Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(FOOD_COLLECTION, name));
+
+        return root.toJson();
+    }
+
     @Path(ADMIN+GET_DISHES)
     @GET
     @Produces("text/plain")
@@ -120,6 +132,7 @@ public class Control {
     public String getDishByName(
             String name
     ) {
-        return Dish.getFoodItemByName(name).getDocument().toJson();
+
+        return Dish.getDishByName(name).getDocument().toJson();
     }
 }

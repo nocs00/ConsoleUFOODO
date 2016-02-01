@@ -5,6 +5,8 @@ import com.ufood.DB.Documentable;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.Date;
+
+import static com.ufood.DB.Constants.ACTIVITY_LEVEL.*;
 import static com.ufood.DB.DBDriver.*;
 import static com.ufood.DB.Constants.*;
 
@@ -14,7 +16,7 @@ public class Task implements Documentable {
     private int age = 25;
     private double height = 175d;
     private double weight = 75d;
-    private ACTIVITY_LEVEL activity_level = ACTIVITY_LEVEL.LIGHT;
+    private ACTIVITY_LEVEL activity_level = LIGHT;
     private BODY_TYPE body_type = BODY_TYPE.NORMAL;
     private ArrayList<String> foodItems;
 
@@ -46,31 +48,63 @@ public class Task implements Documentable {
         return activity_level;
     }
 
+    public String getActivity_level_str() {
+        switch (this.activity_level) {
+            case SEDENTARY:
+                return "sedentary";
+            case LIGHT:
+                return "light";
+            case MODERATE:
+                return "moderate";
+            case HIGH:
+                return "high";
+            case EXTRA_HIGH:
+                return "extra_high";
+            default:
+                return "light";
+        }
+    }
+
     public void setActivity_level(String activity_level) {
         switch (activity_level) {
             case "sedentary" :
-                this.activity_level = ACTIVITY_LEVEL.SEDENTARY;
+                this.activity_level = SEDENTARY;
                 break;
             case "light" :
-                this.activity_level = ACTIVITY_LEVEL.LIGHT;
+                this.activity_level = LIGHT;
                 break;
             case "moderate" :
-                this.activity_level = ACTIVITY_LEVEL.MODERATE;
+                this.activity_level = MODERATE;
                 break;
             case "high" :
-                this.activity_level = ACTIVITY_LEVEL.HIGH;
+                this.activity_level = HIGH;
                 break;
             case "extra_high" :
-                this.activity_level = ACTIVITY_LEVEL.EXTRA_HIGH;
+                this.activity_level = EXTRA_HIGH;
                 break;
             default:
-                this.activity_level = ACTIVITY_LEVEL.LIGHT;
+                this.activity_level = LIGHT;
                 break;
         }
     }
 
     public BODY_TYPE getBody_type() {
         return body_type;
+    }
+
+    public String getBody_type_str() {
+        switch (this.body_type) {
+            case FAT:
+                return "fat";
+            case NORMAL:
+                return "normal";
+            case ATHLETE:
+                return "athlete";
+            case THIN:
+                return "thin";
+            default:
+                return "normal";
+        }
     }
 
     public void setBody_type(String body_type) {
@@ -149,7 +183,13 @@ public class Task implements Documentable {
     public Document getDocument() {
         ArrayList foodItemsObject = new ArrayList(this.foodItems);
         return new Document()
-                .append("properties", new Document().append("sex", this.sex==SEX.MALE?"male":"female"))
+                .append("properties", new Document()
+                        .append("sex", this.sex==SEX.MALE?"male":"female")
+                        .append("age", this.age)
+                        .append("height", this.height)
+                        .append("weight", this.weight)
+                        .append("activity_level", this.getActivity_level_str())
+                        .append("body_type", this.getBody_type_str()))
                 .append("foodItems", foodItemsObject);
     }
 

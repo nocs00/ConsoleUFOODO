@@ -41,7 +41,7 @@ public class FoodItem implements Documentable {
         fat = new Double(bson.get("fats").toString());
     }
 
-    protected FoodItem() {
+    public FoodItem() {
 
     }
 

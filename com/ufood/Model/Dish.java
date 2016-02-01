@@ -55,6 +55,16 @@ public class Dish extends FoodItem implements Documentable {
         loadItems(name);
     }
 
+    public Dish() {
+        
+    }
+
+    public static Dish getDishByName(String name) {
+        Dish dish = null;
+        dish = new Dish(name);
+        return dish;
+    }
+
     public static ArrayList<Dish> findDishesByFoodItems(ArrayList<String> foodItems) {
         ArrayList<Dish> possibleDishes = new ArrayList<Dish>();
 

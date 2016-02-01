@@ -5,6 +5,7 @@ package com.ufood.DB;
  */
 public interface DBInterface {
     public Object select(String from, String what);
+    public Object selectLike(String from, String what);
     public Object select(String from);
     public Object selectAll(String from);
     public Object selectAll(String from, Object content);

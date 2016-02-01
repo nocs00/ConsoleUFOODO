@@ -15,6 +15,7 @@ public class APIConstants {
     public final static String ADD_DISH = "/add-dish";
     public final static String GET_FOODITEMS = "/get-fooditems";
     public final static String GET_FOODITEM_BY_NAME = "/get-fooditem-by-name";
+    public final static String GET_FOODITEM_BY_NAME_LIKE = "/get-fooditem-by-name-like";
     public final static String GET_DISHES = "/get-dishes";
     public final static String GET_DISH_BY_NAME = "/get-dish-by-name";
 }

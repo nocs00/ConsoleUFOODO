@@ -1,10 +1,13 @@
 package com.ufood.DB;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.util.ArrayList;
+import com.mongodb.DBCollection;
+
 import static com.ufood.DB.Constants.*;
 /**
  * Created by pdudenkov on 30.12.2015.
@@ -42,6 +45,18 @@ public class DBDriver implements DBInterface { //singleton
     @Override
     public Document select(String from, String what) {
         return DB.getCollection(from).find(new Document("name", what)).first();
+    }
+
+    @Override
+    public ArrayList<Document> selectLike(String from, String what) {
+        return iterableToList(
+                DB.getCollection(from)
+                        .find(
+                                new Document("name",
+                                        new Document("$regex", "^" + what + "")))
+                        //.projection(
+                                //new Document("name", 1).append("_id", 0))
+        );
     }
 
     @Override
