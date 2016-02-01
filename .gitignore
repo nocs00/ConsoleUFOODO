@@ -47,6 +47,11 @@ Temporary Items
 .apdisk
 
 
-.idea
-out
-main.iml
+*idea*
+out*
+
+*.iml
+*.class
+*.jar
+*.war
+*.ear
