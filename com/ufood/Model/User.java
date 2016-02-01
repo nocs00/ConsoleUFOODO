@@ -17,7 +17,7 @@ public class User implements Documentable {
 //    }
 
     public ArrayList<Menu> getUserMenus() {
-        ArrayList<Document> userMenus = getDBDriver().iterableToList(getDBDriver().selectAll(MENU_COLLECTION, new Document(USER_ID, this.userID)));
+        ArrayList<Document> userMenus = getDBDriver().selectAll(MENU_COLLECTION, new Document(USER_ID, this.userID));
 
         ArrayList<Menu> menus = new ArrayList<Menu>();
         for (Document menuDocument: userMenus) {
