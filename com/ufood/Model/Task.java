@@ -1,6 +1,5 @@
 package com.ufood.Model;
 
-import com.ufood.DB.Constants;
 import com.ufood.DB.Documentable;
 import org.bson.Document;
 import java.util.ArrayList;

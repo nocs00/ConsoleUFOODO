@@ -1,13 +1,10 @@
 package com.ufood.DB;
 
-import com.mongodb.BasicDBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 import java.util.ArrayList;
-import com.mongodb.DBCollection;
-
 import static com.ufood.DB.Constants.*;
 /**
  * Created by pdudenkov on 30.12.2015.

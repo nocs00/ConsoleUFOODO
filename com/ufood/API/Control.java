@@ -3,7 +3,6 @@ package com.ufood.API;
 /**
  * Created by pdudenkov on 06.01.2016.
  */
-import com.ufood.DB.Constants;
 import com.ufood.DB.DBDriver;
 import com.ufood.Model.Dish;
 import com.ufood.Model.FoodItem;
@@ -64,6 +63,7 @@ public class Control {
     @Path(ADMIN+ADD_FOODITEM)
     @PUT
     @Produces("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
     public String addFoodItem(
             FoodItem pojo
     ) {
@@ -75,6 +75,7 @@ public class Control {
     @Path(ADMIN+ADD_DISH)
     @PUT
     @Produces("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
     public String addDish(
             Dish pojo
     ) {

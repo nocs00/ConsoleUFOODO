@@ -1,14 +1,11 @@
 package com.ufood;
 
 import com.ufood.API.Control;
-import com.ufood.DB.Constants;
-import com.ufood.DB.DBDriver;
 import com.ufood.Model.Dish;
 import com.ufood.Model.FoodItem;
 import com.ufood.Model.Result;
 import com.ufood.Model.Task;
 import com.ufood.util.Engine;
-import org.bson.Document;
 
 import java.util.ArrayList;
 import java.util.Collections;
