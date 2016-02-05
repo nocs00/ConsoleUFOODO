@@ -16,57 +16,57 @@ import java.util.HashMap;
  */
 public class Main {
     public static void main(String[] args) {
-        Task task = new Task();
-        task.setUserID("masha90");
-        task.setSex("female");
-        task.setAge(18);
-        task.setHeight(160d);
-        task.setWeight(53);
-        task.setActivity_level("light");
-        task.setBody_type("normal");
-        ArrayList foodItems = new ArrayList();
-        Collections.addAll(foodItems, "apple", "potato", "chicken");
-        //Collections.addAll(foodItems, "rice", null);
-        task.setFoodItems(foodItems);
-
-        Result result = Engine.getResult(task);
-        //System.out.println(result.getDocument().toJson());
-
-
-
-
-        //add food_item
-        System.out.println("Add fooditem:");
-        FoodItem test = new FoodItem();
-        test.setName("atest");
-        System.out.println(new Control().addFoodItem(test));
-        System.out.println("\n\n\n");
-        //add dish
-        System.out.println("Add dish:");
-        Dish dish = new Dish();
-        dish.setName("TESTIARA");
-        dish.setFoodItems(new HashMap<FoodItem, Double>());
-        System.out.println(new Control().addDish(dish));
-        System.out.println("\n\n\n");
-        //get fooditems
-        System.out.println("get all fooditems:");
-        System.out.println(new Control().getFoodItems());
-        System.out.println("\n\n\n");
-        //get dishes
-        System.out.println("Get all dishes:");
-        System.out.println(new Control().getDishes());
-        System.out.println("\n\n\n");
-        //get dish by name:
-        System.out.println("get dish by name:");
-        System.out.println(new Control().getDishByName("soup"));
-        System.out.println("\n\n\n");
-        //absolute search
-        System.out.println("absolute search:");
-        System.out.println(new Control().getFoodItemByName("potato"));
-        System.out.println("\n\n\n");
-        //like search for food_items
-        System.out.println("like search:");
-        System.out.println(new Control().getFoodItemByNameLike("a"));
+//        Task task = new Task();
+//        task.setUserID("masha90");
+//        task.setSex("female");
+//        task.setAge(18);
+//        task.setHeight(160d);
+//        task.setWeight(53);
+//        task.setActivity_level("light");
+//        task.setBody_type("normal");
+//        ArrayList foodItems = new ArrayList();
+//        Collections.addAll(foodItems, "apple", "potato", "chicken");
+//        //Collections.addAll(foodItems, "rice", null);
+//        task.setFoodItems(foodItems);
+//
+//        Result result = Engine.getResult(task);
+//        //System.out.println(result.getDocument().toJson());
+//
+//
+//
+//
+//        //add food_item
+//        System.out.println("Add fooditem:");
+//        FoodItem test = new FoodItem();
+//        test.setName("atest");
+//        System.out.println(new Control().addFoodItem(test));
+//        System.out.println("\n\n\n");
+//        //add dish
+//        System.out.println("Add dish:");
+//        Dish dish = new Dish();
+//        dish.setName("TESTIARA");
+//        dish.setFoodItems(new HashMap<FoodItem, Double>());
+//        System.out.println(new Control().addDish(dish));
+//        System.out.println("\n\n\n");
+//        //get fooditems
+//        System.out.println("get all fooditems:");
+//        System.out.println(new Control().getFoodItems());
+//        System.out.println("\n\n\n");
+//        //get dishes
+//        System.out.println("Get all dishes:");
+//        System.out.println(new Control().getDishes());
+//        System.out.println("\n\n\n");
+//        //get dish by name:
+//        System.out.println("get dish by name:");
+//        System.out.println(new Control().getDishByName("soup"));
+//        System.out.println("\n\n\n");
+//        //absolute search
+//        System.out.println("absolute search:");
+//        System.out.println(new Control().getFoodItemByName("potato"));
+//        System.out.println("\n\n\n");
+//        //like search for food_items
+//        System.out.println("like search:");
+        System.out.println(new Control().getFoodItemByNameLike("akjhdfs"));
 
 
 
