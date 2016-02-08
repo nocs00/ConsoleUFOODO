@@ -4,6 +4,8 @@ package com.ufood.API;
  * Created by pdudenkov on 06.01.2016.
  */
 public class APIConstants {
+    public final static String SEPARATOR = ";";
+    public final static String CHARSET = "charset=utf-8";
     public final static String CONTROL = "/control";
     public final static String MENU = "/get-menu";
     public final static String USER = "/user";

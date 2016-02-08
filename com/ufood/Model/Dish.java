@@ -8,7 +8,7 @@ import static com.ufood.DB.DBDriver.*;
 
 public class Dish extends FoodItem implements Documentable {
     private String name;
-    private HashMap<FoodItem, Double> foodItems;
+    private HashSet<FoodItem> foodItems;
     private double calories;//on 100 gramm
     private double protein;
     private double carbohydrate;
@@ -18,11 +18,11 @@ public class Dish extends FoodItem implements Documentable {
         this.name = name;
     }
 
-    public HashMap<FoodItem, Double> getFoodItems() {
+    public HashSet<FoodItem> getFoodItems() {
         return foodItems;
     }
 
-    public void setFoodItems(HashMap<FoodItem, Double> foodItems) {
+    public void setFoodItems(HashSet<FoodItem> foodItems) {
         this.foodItems = foodItems;
     }
 
@@ -71,7 +71,6 @@ public class Dish extends FoodItem implements Documentable {
         for (Document dishDocument : getDBDriver().selectAll(DISH_COLLECTION)) {
             boolean containAll = true;
             for (Object food : (Iterable)dishDocument.get(FOOD_COLLECTION)) { //TODO: why choose apple salad
-                //String food = (String)((Document)foodObject).get("name");
                 if (food instanceof String || food instanceof Document ) {
                     if (food instanceof Document)
                         food = (String)((Document)food).get("name");
@@ -97,53 +96,36 @@ public class Dish extends FoodItem implements Documentable {
 
     private void loadItems(String dish) {
         this.name = dish;
-        this.foodItems = new HashMap<FoodItem, Double>();
+        this.foodItems = new HashSet<FoodItem>();
         Document dishDocument = getDBDriver().select(DISH_COLLECTION, name);//get first entry in dishes with name (Document)
         ArrayList foods = (ArrayList)dishDocument.get(FOOD_COLLECTION);
         FoodItem food = null;
-        boolean isName = true;
-        //test ignore
-        //test ignore2
+
         for (int i = 0; i < foods.size(); i++) {
-            Double count = 1d; //default
-            if (isName) { //name processing
-                isName = false;
-                food = null;
+            food = null;
 
-                Object t;
-                if (foods.get(i) instanceof String)
-                    t = foods.get(i);
-                else
-                    t = ((Document)foods.get(i)).get("name");
+            Object t;
+            if (foods.get(i) instanceof String)
+                t = foods.get(i);
+            else
+                t = ((Document)foods.get(i)).get("name");
 
-                food = FoodItem.getFoodItemByName((String)t);
-                if (i == foods.size()-1)
-                    foodItems.put(food, count);
-            } else {
-                try { //check if count
-                    count = (Double)foods.get(i);
-                } catch (Exception e) { //if not count return to name processing
-                    --i;
-                } finally {
-                    isName = true;
-                    if (food != null)
-                        foodItems.put(food, count);
-                }
-            }
+            food = FoodItem.getFoodItemByName((String)t);
+            foodItems.add(food);
         }
 
         countNutrients(foodItems);
     }
 
-    private void countNutrients(HashMap<FoodItem, Double> foodItems) {
-        for (Map.Entry foodItem : foodItems.entrySet()) {
-            FoodItem tmp = (FoodItem)foodItem.getKey();
-            Double count = (Double)foodItem.getValue();
+    private void countNutrients(HashSet<FoodItem> foodItems) {
+        for (FoodItem foodItem : foodItems) {
+            FoodItem tmp = foodItem;
+            Double quantity = foodItem.getQuantity();
 
-            this.calories += tmp.getCalories()*count;
-            this.protein += tmp.getProtein()*count;
-            this.carbohydrate += tmp.getCarbohydrate()*count;
-            this.fat += tmp.getFat()*count;
+            this.calories += tmp.getCalories()*quantity;
+            this.protein += tmp.getProtein()*quantity;
+            this.carbohydrate += tmp.getCarbohydrate()*quantity;
+            this.fat += tmp.getFat()*quantity;
         }
         getDBDriver().update(DISH_COLLECTION, this.name, this.getDocument());
     }
@@ -174,14 +156,9 @@ public class Dish extends FoodItem implements Documentable {
     @Override
     public Document getDocument() {
         ArrayList foods = new ArrayList();
-//        for (Map.Entry<FoodItem, Double> entry : this.foodItems.entrySet()) {
-//            foods.add(entry.getKey().getName());
-//            foods.add(entry.getValue());
-//        }
 
-        for (Map.Entry<FoodItem, Double> entry : this.foodItems.entrySet()) {
-            foods.add(((FoodItem) entry.getKey()).getDocument());
-            foods.add(entry.getValue());
+        for (FoodItem food : this.foodItems) {
+            foods.add(food.getDocument());
         }
 
         return new Document("name",this.name)

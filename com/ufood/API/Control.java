@@ -24,12 +24,13 @@ public class Control {
     @Path(MENU)
     @PUT
     @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
     public String getMenu(
             Task task
     ) {
         Result result = Engine.getResult(task);
         Engine.insertResult(result);
+
 
         return result.getDocument().toJson();
     }
@@ -38,53 +39,59 @@ public class Control {
     @GET
     @Produces("text/plain")
     public String getUser() {
-        return "some user info";
+        Document root = new Document("message", "some user info");
+        return root.toJson();
     }
 
     @Path(USER+REGISTER)
     @GET
     @Produces()
     public String register() {
-        return "some register logic";
+        Document root = new Document("message", "some register logic");
+        return root.toJson();
     }
 
     @Path(USER+LOGIN)
     @GET
     public String login() {
-        return "some login logic";
+        Document root = new Document("message", "some login logic");
+        return root.toJson();
     }
 
     @Path(USER+HISTORY)
     @GET
     public String history() {
-        return "history for logged on user";
+        Document root = new Document("message", "history for logged on user");
+        return root.toJson();
     }
 
     @Path(ADMIN+ADD_FOODITEM)
     @PUT
     @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
     public String addFoodItem(
             FoodItem pojo
     ) {
         DBDriver.getDBDriver().insert(FOOD_COLLECTION, pojo.getDocument());
 
-        return "food item inserted";
+        Document root = new Document("message", "food item inserted");
+        return root.toJson();
     }
 
     @Path(ADMIN+ADD_DISH)
     @PUT
     @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON+";charset=utf-8")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
     public String addDish(
             Dish pojo
     ) {
         DBDriver.getDBDriver().insert(DISH_COLLECTION, pojo.getDocument());
 
-        return "dish inserted";
+        Document root = new Document("message", "dish inserted");
+        return root.toJson();
     }
 
-    @Path(ADMIN+GET_FOODITEMS)
+    @Path(GET_FOODITEMS)
     @GET
     @Produces("text/plain")
     public String getFoodItems() {
@@ -94,29 +101,30 @@ public class Control {
         return rootDoc.toJson();
     }
 
-    @Path(ADMIN+GET_FOODITEM_BY_NAME)
+    @Path(GET_FOODITEM_BY_NAME)
     @PUT
     @Produces("text/plain")
-    @Consumes("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
     public String getFoodItemByName(
-            String name
+            Document nameDoc
     ) {
+        String name = nameDoc.getString("name");
         return FoodItem.getFoodItemByName(name).getDocument().toJson();
     }
 
-    @Path(ADMIN+GET_FOODITEM_BY_NAME_LIKE)
+    @Path(GET_FOODITEM_BY_NAME_LIKE)
     @PUT
     @Produces("text/plain")
-    @Consumes("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
     public String getFoodItemByNameLike(
-            String name
+            Document nameDoc
     ) {
+        String name = nameDoc.getString("name");
         Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(FOOD_COLLECTION, name));
-
         return root.toJson();
     }
 
-    @Path(ADMIN+GET_DISHES)
+    @Path(GET_DISHES)
     @GET
     @Produces("text/plain")
     public String getDishes() {
@@ -126,14 +134,14 @@ public class Control {
         return rootDoc.toJson();
     }
 
-    @Path(ADMIN+GET_DISH_BY_NAME)
+    @Path(GET_DISH_BY_NAME)
     @PUT
     @Produces("text/plain")
-    @Consumes("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
     public String getDishByName(
-            String name
+            Document nameDoc
     ) {
-
+        String name = nameDoc.getString("name");
         return Dish.getDishByName(name).getDocument().toJson();
     }
 }

@@ -12,6 +12,7 @@ public class FoodItem implements Documentable {
     private double protein;
     private double carbohydrate;
     private double fat;
+    private double quantity = 1d;
 
     public void setName(String name) {
         this.name = name;
@@ -31,6 +32,14 @@ public class FoodItem implements Documentable {
 
     public void setFat(double fat) {
         this.fat = fat;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 
     public FoodItem (Document bson) {
@@ -62,7 +71,8 @@ public class FoodItem implements Documentable {
                 .append("calories", this.calories)
                 .append("proteins", this.protein)
                 .append("carbohydrates", this.carbohydrate)
-                .append("fats", this.fat);
+                .append("fats", this.fat)
+                .append("quantity", this.quantity);
     }
 
     public double getFat() {
