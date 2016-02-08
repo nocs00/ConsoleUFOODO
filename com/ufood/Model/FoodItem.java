@@ -57,7 +57,8 @@ public class FoodItem implements Documentable {
     public static FoodItem getFoodItemByName(String name) {
         FoodItem foodItem = null;
         Document document = getDBDriver().select(FOOD_COLLECTION, name);
-        foodItem  = new FoodItem(document);
+        if (document != null)
+            foodItem  = new FoodItem(document);
         return foodItem;
     }
 

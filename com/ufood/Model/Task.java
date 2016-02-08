@@ -18,6 +18,22 @@ public class Task implements Documentable {
     private ACTIVITY_LEVEL activity_level = LIGHT;
     private BODY_TYPE body_type = BODY_TYPE.NORMAL;
     private ArrayList<String> foodItems;
+    private boolean metricUS = false;
+
+    public boolean isMetricUS() {
+        return metricUS;
+    }
+
+    public void convertMetric() {
+        if (metricUS) {
+            height *= 2.54d;
+            weight *= 0.45359237d;
+        }
+    }
+
+    public void setMetricUS(int metricUS) {
+        this.metricUS = metricUS==0?false:true;
+    }
 
     public int getAge() {
         return age;

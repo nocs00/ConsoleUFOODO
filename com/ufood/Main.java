@@ -57,17 +57,17 @@ public class Main {
 //        System.out.println("Get all dishes:");
 //        System.out.println(new Control().getDishes());
 //        System.out.println("\n\n\n");
-//        //get dish by name:
-//        System.out.println("get dish by name:");
-//        System.out.println(new Control().getDishByName("soup"));
-//        System.out.println("\n\n\n");
-//        //absolute search
-//        System.out.println("absolute search:");
-//        System.out.println(new Control().getFoodItemByName("potato"));
+        //get dish by name:
+        System.out.println("get dish by name:");
+        System.out.println(new Control().searchDishes(new Document("name", "s")));
+        System.out.println("\n\n\n");
+        //absolute search
+        System.out.println("absolute search:");
+        System.out.println(new Control().searchFoodItems(new Document("name", "a")));
         System.out.println("\n\n\n");
         //like search for food_items
         System.out.println("like search:");
-        System.out.println(new Control().getFoodItemByNameLike(new Document("name","a")));
+        System.out.println(new Control().searchFoodItems(new Document("name", "po")));
 
 
 

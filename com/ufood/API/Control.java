@@ -101,22 +101,11 @@ public class Control {
         return rootDoc.toJson();
     }
 
-    @Path(GET_FOODITEM_BY_NAME)
+    @Path(SEARCH_FOODITEMS)
     @PUT
     @Produces("text/plain")
     @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String getFoodItemByName(
-            Document nameDoc
-    ) {
-        String name = nameDoc.getString("name");
-        return FoodItem.getFoodItemByName(name).getDocument().toJson();
-    }
-
-    @Path(GET_FOODITEM_BY_NAME_LIKE)
-    @PUT
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String getFoodItemByNameLike(
+    public String searchFoodItems(
             Document nameDoc
     ) {
         String name = nameDoc.getString("name");
@@ -134,14 +123,15 @@ public class Control {
         return rootDoc.toJson();
     }
 
-    @Path(GET_DISH_BY_NAME)
+    @Path(SEARCH_DISHES)
     @PUT
     @Produces("text/plain")
     @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String getDishByName(
+    public String searchDishes(
             Document nameDoc
     ) {
         String name = nameDoc.getString("name");
-        return Dish.getDishByName(name).getDocument().toJson();
+        Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(DISH_COLLECTION, name));
+        return root.toJson();
     }
 }
