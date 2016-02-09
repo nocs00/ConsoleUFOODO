@@ -138,6 +138,72 @@ This project is REST API for automatic generating food menu considering parametr
   }
 ```
 
+## Other features
+
+### Add new food_item or dish to server's Database :
+
+**API endpoints :**
+<table>
+  <tr>
+    <td>Endpoint</td>
+    <td>Request type</td>
+    <td>Consumes</td>
+    <td>Produces</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/admin/add-fooditem</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+</table>
+
+**Example food_item to insert :**
+```json
+{ 
+"name" : "chicken", 
+"calories" : 200.0, 
+"proteins" : 50.0, 
+"carbohydrates" : 100.0, 
+"fats" : 50.0, 
+"quantity" : 1.0 
+}
+```
+
+**Example dish to insert :**
+* 1) full json
+```json
+{ 
+"name" : "boiled potatoes", 
+"calories" : 90.0, 
+"proteins" : 50.0, 
+"carbohydrates" : 30.0, 
+"fats" : 10.0, 
+"food_items" : [
+                { 
+                "name" : "potato", 
+                "calories" : 90.0, 
+                "proteins" : 50.0, 
+                "carbohydrates" : 30.0, 
+                "fats" : 10.0, 
+                "quantity" : 1.0 
+                }
+                ] 
+}
+```
+* 2) short json (once this dish will be included in some menu it will be automatically replaced in Database with full form)
+```json
+{ 
+"name" : "boiled potatoes", 
+"calories" : 90.0, 
+"proteins" : 50.0, 
+"carbohydrates" : 30.0, 
+"fats" : 10.0, 
+"food_items" : ["potato"] 
+}
+```
+
+
 ### Search endpoints:
 
 <table>
