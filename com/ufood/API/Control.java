@@ -74,7 +74,7 @@ public class Control {
     ) {
         DBDriver.getDBDriver().insert(FOOD_COLLECTION, pojo.getDocument());
 
-        Document root = new Document("message", "food item inserted");
+        Document root = new Document("message", "food_item inserted");
         return root.toJson();
     }
 

@@ -64,7 +64,7 @@ public class Main {
         System.out.println("\n\n\n");
         //absolute search
         System.out.println("absolute search:");
-        System.out.println(new Control().searchFoodItems(new Document("name", "a")));
+        System.out.println(new Control().searchFoodItems(new Document("name", "ap")));
         System.out.println("\n\n\n");
         //like search for food_items
         System.out.println("like search:");
