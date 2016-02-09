@@ -2,8 +2,8 @@
 
 This project is REST API for automatic generating food menu considering parametres and objectives of person.
 
-To work with this API the first thing you need is Task.
-### Task format (JSON) :
+###To work with this API the first thing you need is Task.
+**Task format (JSON) :**
 
 ```json
 {
@@ -19,7 +19,7 @@ To work with this API the first thing you need is Task.
 }
 ```
 
-### Example:
+**Example :**
 
 ```json
 { 
@@ -36,6 +36,7 @@ To work with this API the first thing you need is Task.
 ```
 
 
+
 ### Search endpoints:
 
 <table>
@@ -49,13 +50,13 @@ To work with this API the first thing you need is Task.
     <td>https://ufoodo.com/mongorest/control/search-fooditems</td>
     <td>PUT</td>
     <td>application/json;charset=utf-8</td>
-    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
   </tr>
   <tr>
     <td>https://ufoodo.com/mongorest/control/search-dishes</td>
     <td>PUT</td>
     <td>application/json;charset=utf-8</td>
-    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
   </tr>
 </table>
 
