@@ -65,8 +65,7 @@ This project is REST API for automatic generating food menu considering parametr
     "age" : 18, 
     "height" : 160.0, 
     "weight" : 53.0, 
-    "activity_level" : 
-    "light", 
+    "activity_level" : "light", 
     "body_type" : "normal", 
     "metricUS" : 0 
     }, 
