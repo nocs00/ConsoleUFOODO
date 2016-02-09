@@ -6,6 +6,7 @@ import com.ufood.Model.FoodItem;
 import com.ufood.Model.Result;
 import com.ufood.Model.Task;
 import com.ufood.util.Engine;
+import org.bson.Document;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,21 +17,22 @@ import java.util.HashMap;
  */
 public class Main {
     public static void main(String[] args) {
-//        Task task = new Task();
-//        task.setUserID("masha90");
-//        task.setSex("female");
-//        task.setAge(18);
-//        task.setHeight(160d);
-//        task.setWeight(53);
-//        task.setActivity_level("light");
-//        task.setBody_type("normal");
-//        ArrayList foodItems = new ArrayList();
-//        Collections.addAll(foodItems, "apple", "potato", "chicken");
-//        //Collections.addAll(foodItems, "rice", null);
-//        task.setFoodItems(foodItems);
-//
-//        Result result = Engine.getResult(task);
-//        //System.out.println(result.getDocument().toJson());
+        Task task = new Task();
+        task.setUserID("masha90");
+        task.setSex("female");
+        task.setAge(18);
+        task.setHeight(160d);
+        task.setWeight(53);
+        task.setActivity_level("light");
+        task.setBody_type("normal");
+        ArrayList foodItems = new ArrayList();
+        Collections.addAll(foodItems, "apple", "potato", "chicken");
+        //Collections.addAll(foodItems, "rice", null);
+        task.setFoodItems(foodItems);
+        task.setMetricUS(0);
+
+        Result result = Engine.getResult(task);
+        System.out.println(result.getDocument().toJson());
 //
 //
 //
@@ -56,17 +58,17 @@ public class Main {
 //        System.out.println("Get all dishes:");
 //        System.out.println(new Control().getDishes());
 //        System.out.println("\n\n\n");
-//        //get dish by name:
-//        System.out.println("get dish by name:");
-//        System.out.println(new Control().getDishByName("soup"));
-//        System.out.println("\n\n\n");
-//        //absolute search
-//        System.out.println("absolute search:");
-//        System.out.println(new Control().getFoodItemByName("potato"));
-//        System.out.println("\n\n\n");
-//        //like search for food_items
-//        System.out.println("like search:");
-        System.out.println(new Control().getFoodItemByNameLike("akjhdfs"));
+        //get dish by name:
+        System.out.println("get dish by name:");
+        System.out.println(new Control().searchDishes(new Document("name", "s")));
+        System.out.println("\n\n\n");
+        //absolute search
+        System.out.println("absolute search:");
+        System.out.println(new Control().searchFoodItems(new Document("name", "ap")));
+        System.out.println("\n\n\n");
+        //like search for food_items
+        System.out.println("like search:");
+        System.out.println(new Control().searchFoodItems(new Document("name", "po")));
 
 
 

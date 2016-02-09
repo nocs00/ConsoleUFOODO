@@ -4,6 +4,8 @@ package com.ufood.API;
  * Created by pdudenkov on 06.01.2016.
  */
 public class APIConstants {
+    public final static String SEPARATOR = ";";
+    public final static String CHARSET = "charset=utf-8";
     public final static String CONTROL = "/control";
     public final static String MENU = "/get-menu";
     public final static String USER = "/user";
@@ -14,8 +16,7 @@ public class APIConstants {
     public final static String ADD_FOODITEM = "/add-fooditem";
     public final static String ADD_DISH = "/add-dish";
     public final static String GET_FOODITEMS = "/get-fooditems";
-    public final static String GET_FOODITEM_BY_NAME = "/get-fooditem-by-name";
-    public final static String GET_FOODITEM_BY_NAME_LIKE = "/get-fooditem-by-name-like";
     public final static String GET_DISHES = "/get-dishes";
-    public final static String GET_DISH_BY_NAME = "/get-dish-by-name";
+    public final static String SEARCH_FOODITEMS = "/search-fooditems";
+    public final static String SEARCH_DISHES = "/search-dishes";
 }

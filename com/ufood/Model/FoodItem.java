@@ -12,6 +12,7 @@ public class FoodItem implements Documentable {
     private double protein;
     private double carbohydrate;
     private double fat;
+    private double quantity = 1d;
 
     public void setName(String name) {
         this.name = name;
@@ -33,6 +34,14 @@ public class FoodItem implements Documentable {
         this.fat = fat;
     }
 
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
+    }
+
     public FoodItem (Document bson) {
         name = bson.get("name").toString();
         calories = new Double(bson.get("calories").toString());
@@ -48,7 +57,8 @@ public class FoodItem implements Documentable {
     public static FoodItem getFoodItemByName(String name) {
         FoodItem foodItem = null;
         Document document = getDBDriver().select(FOOD_COLLECTION, name);
-        foodItem  = new FoodItem(document);
+        if (document != null)
+            foodItem  = new FoodItem(document);
         return foodItem;
     }
 
@@ -62,7 +72,8 @@ public class FoodItem implements Documentable {
                 .append("calories", this.calories)
                 .append("proteins", this.protein)
                 .append("carbohydrates", this.carbohydrate)
-                .append("fats", this.fat);
+                .append("fats", this.fat)
+                .append("quantity", this.quantity);
     }
 
     public double getFat() {
