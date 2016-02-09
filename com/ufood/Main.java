@@ -29,6 +29,7 @@ public class Main {
         Collections.addAll(foodItems, "apple", "potato", "chicken");
         //Collections.addAll(foodItems, "rice", null);
         task.setFoodItems(foodItems);
+        task.setMetricUS(0);
 
         Result result = Engine.getResult(task);
         System.out.println(result.getDocument().toJson());

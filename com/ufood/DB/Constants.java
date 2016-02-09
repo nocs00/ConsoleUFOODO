@@ -7,7 +7,7 @@ public abstract class Constants {
     public final static String MENU_COLLECTION = "menus";
     public final static String TASK_COLLECTION = "tasks";
     public final static String RESULT_COLLECTION = "results";
-    public final static String USER_ID = "user_id";
+    public final static String USER_ID = "userID";
     public static enum SEX {MALE, FEMALE};
     public static enum ACTIVITY_LEVEL {SEDENTARY, LIGHT, MODERATE, HIGH, EXTRA_HIGH};
     public static enum BODY_TYPE {FAT, NORMAL, ATHLETE, THIN};

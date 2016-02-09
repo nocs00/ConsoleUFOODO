@@ -204,7 +204,8 @@ public class Task implements Documentable {
                         .append("height", this.height)
                         .append("weight", this.weight)
                         .append("activity_level", this.getActivity_level_str())
-                        .append("body_type", this.getBody_type_str()))
+                        .append("body_type", this.getBody_type_str())
+                        .append("metricUS", this.isMetricUS()?1:0))
                 .append("foodItems", foodItemsObject);
     }
 
