@@ -209,6 +209,17 @@ This project is REST API for automatic generating food menu considering parametr
 }
 ```
 
+**As result you will get answer like :**
+```json
+{ "message" : "dish inserted"}
+```
+
+or
+
+```json
+{ "message" : "food_item inserted"}
+```
+
 ### Get all food_items or dishes in Database
 
 **API endpoints :**
@@ -233,7 +244,20 @@ This project is REST API for automatic generating food menu considering parametr
   </tr>
 </table>
 
+**Result will look like :**
+```json
+{"food_items" : []}
+```
+
+or
+
+```json
+{"dishes" : []}
+```
+
 ### Search food_items or dishes in Database:
+
+**API endpoints :**
 
 <table>
   <tr>
@@ -255,6 +279,30 @@ This project is REST API for automatic generating food menu considering parametr
     <td>text/plain</td>
   </tr>
 </table>
+
+**Request example :**
+
+```json
+{ "name" : "ap" }
+```
+
+**Result of resuest above :**
+
+```json
+{ 
+"found_items" : [
+                { 
+                "_id" : { "$oid" : "56b899675daf813030836654" }, 
+                "name" : "apple", 
+                "calories" : 100, 
+                "proteins" : 30, 
+                "carbohydrates" : 25, 
+                "fats" : 30, 
+                "quantity" : 1 
+                }] 
+}
+```
+
 
 ### Full list of endpoints :
 <table>
