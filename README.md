@@ -156,6 +156,12 @@ This project is REST API for automatic generating food menu considering parametr
     <td>application/json;charset=utf-8</td>
     <td>text/plain</td>
   </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/admin/add-dish</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
 </table>
 
 **Example food_item to insert :**
@@ -203,8 +209,31 @@ This project is REST API for automatic generating food menu considering parametr
 }
 ```
 
+### Get all food_items or dishes in Database
 
-### Search endpoints:
+**API endpoints :**
+<table>
+  <tr>
+    <td>Endpoint</td>
+    <td>Request type</td>
+    <td>Consumes</td>
+    <td>Produces</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/get-fooditems</td>
+    <td>GET</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/get-dishes</td>
+    <td>GET</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+</table>
+
+### Search food_items or dishes in Database:
 
 <table>
   <tr>
@@ -228,6 +257,54 @@ This project is REST API for automatic generating food menu considering parametr
 </table>
 
 ### Full list of endpoints :
-* abc
-* jfd
+<table>
+  <tr>
+    <td>Endpoint</td>
+    <td>Request type</td>
+    <td>Consumes</td>
+    <td>Produces</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/get-menu</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/admin/add-fooditem</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/admin/add-dish</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/get-fooditems</td>
+    <td>GET</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/get-dishes</td>
+    <td>GET</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/search-fooditems</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+  <tr>
+    <td>https://ufoodo.com/mongorest/control/search-dishes</td>
+    <td>PUT</td>
+    <td>application/json;charset=utf-8</td>
+    <td>text/plain</td>
+  </tr>
+</table>
 
