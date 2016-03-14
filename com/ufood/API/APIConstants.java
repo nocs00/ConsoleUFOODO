@@ -13,6 +13,7 @@ public class APIConstants {
     public final static String LOGIN = "/login";
     public final static String HISTORY = "/history";
     public final static String ADMIN = "/admin";
+    public final static String FILL_URLS = "/fill-urls";
     public final static String ADD_FOODITEM = "/add-fooditem";
     public final static String ADD_DISH = "/add-dish";
     public final static String GET_FOODITEMS = "/get-fooditems";

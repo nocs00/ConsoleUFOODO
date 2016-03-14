@@ -2,6 +2,9 @@ package com.ufood.Model;
 
 import com.ufood.DB.Documentable;
 import org.bson.Document;
+
+import java.util.ArrayList;
+
 import static com.ufood.DB.Constants.*;
 import static com.ufood.DB.DBDriver.*;
 
@@ -13,6 +16,15 @@ public class FoodItem implements Documentable {
     private double carbohydrate;
     private double fat;
     private double quantity = 1d;
+    private ArrayList imagesURL;
+
+    public ArrayList getImagesURL() {
+        return imagesURL;
+    }
+
+    public void setImagesURL(ArrayList imagesURL) {
+        this.imagesURL = new ArrayList(imagesURL);
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -48,6 +60,7 @@ public class FoodItem implements Documentable {
         protein = new Double(bson.get("proteins").toString());
         carbohydrate = new Double(bson.get("carbohydrates").toString());
         fat = new Double(bson.get("fats").toString());
+        imagesURL = (ArrayList)bson.get("imagesURL");
     }
 
     public FoodItem() {
@@ -73,7 +86,8 @@ public class FoodItem implements Documentable {
                 .append("proteins", this.protein)
                 .append("carbohydrates", this.carbohydrate)
                 .append("fats", this.fat)
-                .append("quantity", this.quantity);
+                .append("quantity", this.quantity)
+                .append("imagesURL", this.imagesURL!=null?this.imagesURL:new ArrayList());
     }
 
     public double getFat() {

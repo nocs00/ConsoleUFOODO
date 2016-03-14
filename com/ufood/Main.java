@@ -17,6 +17,9 @@ import java.util.HashMap;
  */
 public class Main {
     public static void main(String[] args) {
+        Engine.fillURLsFoodItems();
+        Engine.fillURLsDishes();
+        /*
         Task task = new Task();
         task.setUserID("masha90");
         task.setSex("female");
@@ -33,6 +36,7 @@ public class Main {
 
         Result result = Engine.getResult(task);
         System.out.println(result.getDocument().toJson());
+        */
 //
 //
 //
@@ -59,16 +63,16 @@ public class Main {
 //        System.out.println(new Control().getDishes());
 //        System.out.println("\n\n\n");
         //get dish by name:
-        System.out.println("get dish by name:");
-        System.out.println(new Control().searchDishes(new Document("name", "s")));
-        System.out.println("\n\n\n");
-        //absolute search
-        System.out.println("absolute search:");
-        System.out.println(new Control().searchFoodItems(new Document("name", "ap")));
-        System.out.println("\n\n\n");
-        //like search for food_items
-        System.out.println("like search:");
-        System.out.println(new Control().searchFoodItems(new Document("name", "po")));
+//        System.out.println("get dish by name:");
+//        System.out.println(new Control().searchDishes(new Document("name", "s")));
+//        System.out.println("\n\n\n");
+//        //absolute search
+//        System.out.println("absolute search:");
+//        System.out.println(new Control().searchFoodItems(new Document("name", "ap")));
+//        System.out.println("\n\n\n");
+//        //like search for food_items
+//        System.out.println("like search:");
+//        System.out.println(new Control().searchFoodItems(new Document("name", "po")));
 
 
 

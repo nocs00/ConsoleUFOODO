@@ -8,6 +8,10 @@ public abstract class Constants {
     public final static String TASK_COLLECTION = "tasks";
     public final static String RESULT_COLLECTION = "results";
     public final static String USER_ID = "userID";
+    public final static String IMAGE_PATH_DEBUG = "C:/Users/pdudenkov/files/";
+    public final static String IMAGE_PATH ="/var/lib/tomcat7/webapps/ROOT/files";
+    public final static String IMAGE_BASE_URL = "ufoodo.com/files/";
+
     public static enum SEX {MALE, FEMALE};
     public static enum ACTIVITY_LEVEL {SEDENTARY, LIGHT, MODERATE, HIGH, EXTRA_HIGH};
     public static enum BODY_TYPE {FAT, NORMAL, ATHLETE, THIN};

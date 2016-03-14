@@ -1,20 +1,101 @@
 package com.ufood.util;
 
 import com.ufood.DB.Constants;
-import com.ufood.Model.Dish;
-import com.ufood.Model.Menu;
-import com.ufood.Model.Result;
-import com.ufood.Model.Task;
+import com.ufood.Model.*;
+import org.bson.Document;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.ufood.DB.Constants.RESULT_COLLECTION;
+import static com.ufood.DB.Constants.*;
 import static com.ufood.DB.DBDriver.getDBDriver;
 
 /**
  * Created by pdudenkov on 15.01.2016.
  */
 public class Engine {
+    public static void fillURLsFoodItems() {
+        ArrayList<Document> food_items = getDBDriver().selectAll(FOOD_COLLECTION);
+
+        File folder = new File(IMAGE_PATH);
+        File[] list = folder.listFiles();
+
+        for (Document food_item : food_items) {
+            FoodItem foodItem = new FoodItem(food_item);
+//            for (Object imageObject: foodItem.getImagesURL()) {
+//                Document imageDocument = (Document)imageObject;
+//                String imageURL = imageDocument.get("url").toString();
+//                int width = new Integer(imageDocument.get("width").toString());
+//                int height = new Integer(imageDocument.get("height").toString());
+//
+//            }
+            ArrayList urls = new ArrayList();
+
+            for (File file : list) {
+                String fileNameLowCase = file.getName().toLowerCase();
+                String foodItemNameLowCase = foodItem.getName().toLowerCase();
+
+                if (!file.isDirectory() && fileNameLowCase.contains(foodItemNameLowCase)) {
+                    int width = -1;
+                    int height = -1;
+                    try {
+                        BufferedImage bimg = ImageIO.read(file);
+                        width = bimg.getWidth();
+                        height = bimg.getHeight();
+                    } catch (IOException e) {
+
+                    }
+
+                    urls.add(new Document()
+                            .append("url", IMAGE_BASE_URL + file.getName())
+                            .append("width", width)
+                            .append("height", height));
+                }
+            }
+            foodItem.setImagesURL(urls);
+            getDBDriver().update(FOOD_COLLECTION, foodItem.getName(), foodItem.getDocument());
+        }
+    }
+
+    public static void fillURLsDishes() {
+        ArrayList<Document> dishes = getDBDriver().selectAll(DISH_COLLECTION);
+
+        File folder = new File(IMAGE_PATH);
+        File[] list = folder.listFiles();
+
+        for (Document dishDocument : dishes) {
+            Dish dish = new Dish(dishDocument);
+            ArrayList urls = new ArrayList();
+
+            for (File file : list) {
+                String fileNameLowCase = file.getName().toLowerCase();
+                String dishNameLowCase = dish.getName().toLowerCase();
+
+                if (!file.isDirectory() && fileNameLowCase.contains(dishNameLowCase)) {
+                    int width = -1;
+                    int height = -1;
+                    try {
+                        BufferedImage bimg = ImageIO.read(file);
+                        width = bimg.getWidth();
+                        height = bimg.getHeight();
+                    } catch (IOException e) {
+
+                    }
+
+                    urls.add(new Document()
+                            .append("url", IMAGE_BASE_URL + file.getName())
+                            .append("width", width)
+                            .append("height", height));
+                }
+            }
+            dish.setImagesURL(urls);
+            getDBDriver().update(FOOD_COLLECTION, dish.getName(), dish.getDocument());
+        }
+    }
+
     public static Result getResult(Task task) {
         Result result = new Result();
         result.setTask(task);

@@ -14,13 +14,34 @@ import org.bson.Document;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-import static com.ufood.DB.Constants.*;
 
+import static com.ufood.DB.Constants.*;
 import static com.ufood.API.APIConstants.*;
 
 
 @Path(CONTROL)
 public class Control {
+//    @Path("test-login")
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public Response login(
+//            @Context HttpHeaders httpHeaders
+//    ) {
+//        List<String> authList = httpHeaders.getRequestHeaders().get("Authorization");
+//        for (String authorization  : authList) {
+//            if (authorization != null && authorization.startsWith("Basic")) {
+//                // Authorization: Basic base64credentials
+//                String base64Credentials = authorization.substring("Basic".length()).trim();
+//                String credentials = new String(Base64.getDecoder().decode(base64Credentials),
+//                        Charset.forName("UTF-8"));
+//                // credentials = username:password
+//                final String[] values = credentials.split(":", 2);
+//            }
+//        }
+//
+//        return Response.status(200).build();
+//    }
+
     @Path(MENU)
     @PUT
     @Produces("text/plain")
@@ -30,7 +51,6 @@ public class Control {
     ) {
         Result result = Engine.getResult(task);
         Engine.insertResult(result);
-
 
         return result.getDocument().toJson();
     }
@@ -133,5 +153,12 @@ public class Control {
         String name = nameDoc.getString("name");
         Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(DISH_COLLECTION, name));
         return root.toJson();
+    }
+
+    @Path(ADMIN+FILL_URLS)
+    @GET
+    public void fillURLs() {
+        Engine.fillURLsFoodItems();
+        Engine.fillURLsDishes();
     }
 }

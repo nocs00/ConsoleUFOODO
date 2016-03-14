@@ -13,6 +13,15 @@ public class Dish extends FoodItem implements Documentable {
     private double protein;
     private double carbohydrate;
     private double fat;
+    private ArrayList imagesURL;
+
+    public ArrayList getImagesURL() {
+        return imagesURL;
+    }
+
+    public void setImagesURL(ArrayList imagesURL) {
+        this.imagesURL = new ArrayList(imagesURL);
+    }
 
     public void setName(String name) {
         this.name = name;
@@ -44,6 +53,12 @@ public class Dish extends FoodItem implements Documentable {
     @Override
     public void setFat(double fat) {
         this.fat = fat;
+    }
+
+    public Dish(Document bson) {
+        name = bson.get("name").toString();
+        loadItems(bson);
+        imagesURL = (ArrayList)bson.get("imagesURL");
     }
 
     public Dish(String name) {
@@ -117,6 +132,28 @@ public class Dish extends FoodItem implements Documentable {
         countNutrients(foodItems);
     }
 
+    private void loadItems(Document bson) {
+        this.foodItems = new HashSet<FoodItem>();
+        Document dishDocument = bson;
+        ArrayList foods = (ArrayList)dishDocument.get(FOOD_COLLECTION);
+        FoodItem food = null;
+
+        for (int i = 0; i < foods.size(); i++) {
+            food = null;
+
+            Object t;
+            if (foods.get(i) instanceof String)
+                t = foods.get(i);
+            else
+                t = ((Document)foods.get(i)).get("name");
+
+            food = FoodItem.getFoodItemByName((String)t);
+            foodItems.add(food);
+        }
+
+        countNutrients(foodItems);
+    }
+
     private void countNutrients(HashSet<FoodItem> foodItems) {
         for (FoodItem foodItem : foodItems) {
             FoodItem tmp = foodItem;
@@ -166,6 +203,7 @@ public class Dish extends FoodItem implements Documentable {
                 .append("proteins", this.protein)
                 .append("carbohydrates", this.carbohydrate)
                 .append("fats", this.fat)
+                .append("imagesURL", this.imagesURL!=null?this.imagesURL:new ArrayList())
                 .append(FOOD_COLLECTION, foods);
     }
 }
