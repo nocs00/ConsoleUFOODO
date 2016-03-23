@@ -2,10 +2,14 @@ package com.ufood;
 
 import com.ufood.API.Control;
 import static com.ufood.DB.Constants.*;
+import static com.ufood.DB.DBDriver.getDBDriver;
+
+import com.ufood.DB.Constants;
 import com.ufood.Model.Dish;
 import com.ufood.Model.FoodItem;
 import com.ufood.Model.Result;
 import com.ufood.Model.Task;
+import com.ufood.schema.FoodItemSchema;
 import com.ufood.util.Engine;
 import org.bson.Document;
 
@@ -21,18 +25,23 @@ public class Main {
 //        Engine.fillURLsFoodItems();
 //        Engine.fillURLsDishes();
 
-        System.out.println(DATABASE_NAME);
-        System.out.println(FOOD_COLLECTION);
-        System.out.println(DISH_COLLECTION);
-        System.out.println(MENU_COLLECTION);
-        System.out.println(TASK_COLLECTION);
-        System.out.println(RESULT_COLLECTION);
-        System.out.println(USER_ID);
-        System.out.println(IMAGE_PATH_DEBUG);
-        System.out.println(IMAGE_PATH);
-        System.out.println(IMAGE_BASE_URL);
+//        System.out.println(DATABASE_NAME);
+//        System.out.println(FOOD_COLLECTION);
+//        System.out.println(DISH_COLLECTION);
+//        System.out.println(MENU_COLLECTION);
+//        System.out.println(TASK_COLLECTION);
+//        System.out.println(RESULT_COLLECTION);
+//        System.out.println(USER_ID);
+//        System.out.println(IMAGE_PATH_DEBUG);
+//        System.out.println(IMAGE_PATH);
+//        System.out.println(IMAGE_BASE_URL);
 
-
+        Document foodItemDocument = getDBDriver().select(Constants.FOOD_COLLECTION, "apple2"); //for debug
+        try {
+            FoodItemSchema.checkAndApplySchema(foodItemDocument);
+        } catch (Exception e) {
+            System.out.println("exception thrown");
+        }
 
         /*
         Task task = new Task();

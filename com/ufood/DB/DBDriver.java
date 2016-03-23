@@ -3,6 +3,7 @@ package com.ufood.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
+import com.ufood.schema.FoodItemSchema;
 import org.bson.Document;
 import java.util.ArrayList;
 import static com.ufood.DB.Constants.*;
