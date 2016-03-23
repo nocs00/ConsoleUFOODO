@@ -1,6 +1,7 @@
 package com.ufood;
 
 import com.ufood.API.Control;
+import static com.ufood.DB.Constants.*;
 import com.ufood.Model.Dish;
 import com.ufood.Model.FoodItem;
 import com.ufood.Model.Result;
@@ -17,8 +18,22 @@ import java.util.HashMap;
  */
 public class Main {
     public static void main(String[] args) {
-        Engine.fillURLsFoodItems();
-        Engine.fillURLsDishes();
+//        Engine.fillURLsFoodItems();
+//        Engine.fillURLsDishes();
+
+        System.out.println(DATABASE_NAME);
+        System.out.println(FOOD_COLLECTION);
+        System.out.println(DISH_COLLECTION);
+        System.out.println(MENU_COLLECTION);
+        System.out.println(TASK_COLLECTION);
+        System.out.println(RESULT_COLLECTION);
+        System.out.println(USER_ID);
+        System.out.println(IMAGE_PATH_DEBUG);
+        System.out.println(IMAGE_PATH);
+        System.out.println(IMAGE_BASE_URL);
+
+
+
         /*
         Task task = new Task();
         task.setUserID("masha90");
