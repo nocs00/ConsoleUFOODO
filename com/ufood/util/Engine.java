@@ -6,17 +6,37 @@ import org.bson.Document;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import static com.ufood.DB.Constants.*;
 import static com.ufood.DB.DBDriver.getDBDriver;
+import org.apache.commons.codec.binary.*;
 
 /**
  * Created by pdudenkov on 15.01.2016.
  */
-public class Engine {
+public abstract class Engine {
+    public static String readJsonFile(String path) throws IOException {
+        StringBuffer sb = new StringBuffer();
+        FileReader fileReader = new FileReader(path);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+        String line = null;
+        while ((line=bufferedReader.readLine())!=null) {
+            sb.append(line);
+        }
+
+        fileReader.close();
+        bufferedReader.close();
+        return sb.toString();
+    }
+
+    public static String isLoggedIn(String encodedHeaderBase64) {
+        String decodedHeader = new String(Base64.decodeBase64(encodedHeaderBase64));
+        return decodedHeader;
+    }
+
     public static void fillURLsFoodItems() {
         ArrayList<Document> food_items = getDBDriver().selectAll(FOOD_COLLECTION);
 

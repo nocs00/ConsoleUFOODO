@@ -12,8 +12,10 @@ import com.ufood.Model.Task;
 import org.bson.Document;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static com.ufood.DB.Constants.*;
 import static com.ufood.API.APIConstants.*;
@@ -21,6 +23,8 @@ import static com.ufood.API.APIConstants.*;
 
 @Path(CONTROL)
 public class Control {
+    private Logger logger = Logger.getLogger(Control.class.getName());
+
 //    @Path("test-login")
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
@@ -41,6 +45,7 @@ public class Control {
 //
 //        return Response.status(200).build();
 //    }
+
 
     @Path(MENU)
     @PUT
@@ -71,10 +76,14 @@ public class Control {
         return root.toJson();
     }
 
+
     @Path(USER+LOGIN)
-    @GET
-    public String login() {
-        Document root = new Document("message", "some login logic");
+    @POST
+    @Produces("text/plain")
+    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+    public String login(@HeaderParam(HttpHeaders.AUTHORIZATION) String authorizationInfo) {
+        final String decoded = Engine.isLoggedIn(authorizationInfo);
+        Document root = new Document("message", String.format("Your authorization http header: %s ; original: %s", decoded, authorizationInfo));
         return root.toJson();
     }
 

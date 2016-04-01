@@ -1,19 +1,20 @@
 package com.ufood.schema;
 
-
 import com.ufood.DB.Constants;
 import org.bson.Document;
 
-import java.lang.reflect.Constructor;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import static com.ufood.DB.DBDriver.*;
+import static com.ufood.DB.DBDriver.getDBDriver;
 
 /**
- * Created by pdudenkov on 23.03.2016.
+ * Created by pdudenkov on 01.04.2016.
  */
-public class FoodItemSchema {    
+public class SchemaValidator {
     private final static Map<String, Class> currentSchema;
+
     static {
         currentSchema = new LinkedHashMap<>();
         final Class stringClass = String.class;
@@ -47,8 +48,8 @@ public class FoodItemSchema {
         return true;
     }
 
-    public static void checkAndApplySchema(Document foodItemDocument) throws InstantiationException, IllegalAccessException{
-        if (isValidFoodItemSchema(foodItemDocument)) return;
+    public static Document checkAndApplySchema(Document foodItemDocument) throws InstantiationException, IllegalAccessException {
+        if (isValidFoodItemSchema(foodItemDocument)) return foodItemDocument;
         Document newFoodItemDocument = new Document();
 
         for (Map.Entry<String, Class> currentSchemaEntry : currentSchema.entrySet()) {
@@ -78,5 +79,6 @@ public class FoodItemSchema {
 
         //enable after debug
         getDBDriver().update(Constants.FOOD_COLLECTION, foodItemDocument.get("name").toString(), newFoodItemDocument);
+        return newFoodItemDocument;
     }
 }

@@ -1,27 +1,47 @@
 package com.ufood;
 
-import com.ufood.API.Control;
+//import com.ufood.API.Control;
+//import static com.ufood.DB.Constants.*;
+//import static com.ufood.DB.DBDriver.getDBDriver;
+//
 import static com.ufood.DB.Constants.*;
-import static com.ufood.DB.DBDriver.getDBDriver;
+//import com.ufood.Model.Dish;
+//import com.ufood.Model.FoodItem;
+//import com.ufood.Model.Result;
+//import com.ufood.Model.Task;
+//import com.ufood.schema.FoodItemSchema;
+//import com.ufood.util.Engine;
+//import org.bson.Document;
+//
+//import java.util.ArrayList;
+//import java.util.Collections;
+//import java.util.HashMap;
 
-import com.ufood.DB.Constants;
-import com.ufood.Model.Dish;
-import com.ufood.Model.FoodItem;
-import com.ufood.Model.Result;
-import com.ufood.Model.Task;
-import com.ufood.schema.FoodItemSchema;
+
+//import com.sun.jersey.api.client.Client;
+//import com.sun.jersey.api.client.ClientResponse;
+//import com.sun.jersey.api.client.WebResource;
+//import com.sun.jersey.api.client.config.ClientConfig;
+//import com.sun.jersey.api.client.config.DefaultClientConfig;
+
+import com.ufood.schema.SchemaStorage;
 import com.ufood.util.Engine;
 import org.bson.Document;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import javax.ws.rs.core.MediaType;
+import java.util.Map;
 
 /**
  * Created by pdudenkov on 15.01.2016.
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)  throws Throwable {
+        String decoded = new String(org.apache.commons.codec.binary.Base64.decodeBase64("YWJjZGVmZw=="));
+        System.out.println(decoded);
+
+        Document doc = Document.parse(Engine.readJsonFile(RESOURCES_PATH + "fooditem_schema.json"));
+        //sendLoginRequest();
+
 //        Engine.fillURLsFoodItems();
 //        Engine.fillURLsDishes();
 
@@ -36,12 +56,12 @@ public class Main {
 //        System.out.println(IMAGE_PATH);
 //        System.out.println(IMAGE_BASE_URL);
 
-        Document foodItemDocument = getDBDriver().select(Constants.FOOD_COLLECTION, "apple2"); //for debug
-        try {
-            FoodItemSchema.checkAndApplySchema(foodItemDocument);
-        } catch (Exception e) {
-            System.out.println("exception thrown");
-        }
+//        Document foodItemDocument = getDBDriver().select(Constants.FOOD_COLLECTION, "apple2"); //for debug
+//        try {
+//            FoodItemSchema.checkAndApplySchema(foodItemDocument);
+//        } catch (Exception e) {
+//            System.out.println("exception thrown");
+//        }
 
         /*
         Task task = new Task();
@@ -118,4 +138,42 @@ public class Main {
 //        System.out.println("FAT+LBM "+((Fat*weight/100)+LBM));
 //        System.out.println("Ideal weight: "+idealWeight);
     }
+
+//    public static void sendLoginRequest() {
+//
+//        class Customer {
+//            String name;
+//            int pin;
+//
+//            public void setName(String name) {
+//                this.name = name;
+//            }
+//
+//            public void setPin(int pin) {
+//                this.pin = pin;
+//            }
+//        }
+//
+//        ClientConfig config = new DefaultClientConfig();
+//        Client client = Client.create(config);
+//        final String userName = "admin";
+//        final String password = "admin";
+//        String cred = userName + ":" + password;
+//        WebResource service = client.resource(getBaseURI());
+//
+//
+//        Customer customer = new Customer();
+//        customer.setName("noob");
+//        customer.setPin(123455);
+//        ClientResponse response = service.path("user").path("login")
+//                .accept(MediaType.APPLICATION_XML)
+//                .header("Authorization", cred)
+//                .post(ClientResponse.class, customer);
+//
+//        System.out.println(" response " + response.getEntity(String.class));
+//    }
+//
+//    private static String  getBaseURI() {
+//        return "https://ufoodo.com/mongorest/control/";
+//    }
 }
