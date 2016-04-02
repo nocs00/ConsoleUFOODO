@@ -1,14 +1,14 @@
-package com.ufood.API;
+package com.ufood.api;
 
 /**
  * Created by pdudenkov on 06.01.2016.
  */
-import com.ufood.DB.DBDriver;
-import com.ufood.Model.Dish;
-import com.ufood.Model.FoodItem;
+import com.ufood.db.DBDriver;
+import com.ufood.model.Dish;
+import com.ufood.model.FoodItem;
 import com.ufood.util.Engine;
-import com.ufood.Model.Result;
-import com.ufood.Model.Task;
+import com.ufood.model.Result;
+import com.ufood.model.Task;
 import org.bson.Document;
 
 import javax.ws.rs.*;
@@ -17,8 +17,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.logging.Logger;
 
-import static com.ufood.DB.Constants.*;
-import static com.ufood.API.APIConstants.*;
+import static com.ufood.db.Constants.*;
+import static com.ufood.api.APIConstants.*;
 
 
 @Path(CONTROL)

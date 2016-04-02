@@ -1,84 +1,87 @@
 package com.ufood.schema;
 
-import com.ufood.DB.Constants;
+import com.ufood.db.Constants;
+import com.ufood.exception.SchemaNotFoundException;
 import org.bson.Document;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import static com.ufood.DB.DBDriver.getDBDriver;
+import static com.ufood.db.DBDriver.getDBDriver;
 
 /**
  * Created by pdudenkov on 01.04.2016.
  */
 public class SchemaValidator {
-    private final static Map<String, Class> currentSchema;
+    private final static Logger LOG = Logger.getLogger(SchemaValidator.class.getSimpleName());
 
-    static {
-        currentSchema = new LinkedHashMap<>();
-        final Class stringClass = String.class;
-        final Class doubleClass = Double.class;
-        final Class arrayListClass = ArrayList.class;
+    private static boolean isValidModel(Document modelDocument, Document schema) {
+        for (Map.Entry<String, Object> entry : modelDocument.entrySet()) {
+            final String name = entry.getKey();
+            final Class clazz = entry.getValue().getClass();
 
-        currentSchema.put("_id", null);
-        currentSchema.put("name", stringClass);
-        currentSchema.put("calories", doubleClass);
-        currentSchema.put("proteins", doubleClass);
-        currentSchema.put("carbohydrates", doubleClass);
-        currentSchema.put("fats", doubleClass);
-        currentSchema.put("quantity",doubleClass);
-        currentSchema.put("imagesURL", arrayListClass);
-    }
+            if (name.equals("_id")) continue;
 
-    private static boolean isValidFoodItemSchema(Document foodItemDocument) {
-        for (Map.Entry<String, Object> foodItemSchemaEntry : foodItemDocument.entrySet()) {
-            final String schemaEntryName = foodItemSchemaEntry.getKey();
-            final Class schemaEntryValueClass = foodItemSchemaEntry.getValue().getClass();
-
-            if (schemaEntryName.equals("_id")) continue;
-
-            if (!currentSchema.containsKey(schemaEntryName)) return false;
+            if (!schema.containsKey(name)) return false;
             else {
-                final Class c = currentSchema.get(schemaEntryName);
-                if (!schemaEntryValueClass.equals(c)) return false;
+                final Class c = schema.get(name).getClass();
+                if (!clazz.equals(c)) return false;
             }
         }
 
         return true;
     }
 
-    public static Document checkAndApplySchema(Document foodItemDocument) throws InstantiationException, IllegalAccessException {
-        if (isValidFoodItemSchema(foodItemDocument)) return foodItemDocument;
-        Document newFoodItemDocument = new Document();
+    public static Document checkAndApplySchema(String fromCollection, Document modelDocument) throws InstantiationException, IllegalAccessException {
+        if (!SchemaStorage.isValidationEnabled()) {
+            LOG.log(Level.INFO, String.format("Schema validation disabled. {%s : %s}",
+                    fromCollection, modelDocument.get("name").toString()));
+            return modelDocument;
+        }
 
-        for (Map.Entry<String, Class> currentSchemaEntry : currentSchema.entrySet()) {
-            final String currentSchemaEntryName = currentSchemaEntry.getKey();
-            final Class currentSchemaEntryValueClass = currentSchemaEntry.getValue();
+        Class modelClass = Constants.mapClassByDatabaseColletion.get(fromCollection);
+        Document schema = null;
+        try {
+            schema = SchemaStorage.getSchemaByClass(modelClass);
+        } catch (SchemaNotFoundException e) {
+            LOG.log(Level.INFO, String.format("Schema not found for {%s : %s}",
+                    fromCollection, modelDocument.get("name").toString()));
+            return modelDocument;
+        }
 
-            if (currentSchemaEntryName.equals("_id")) {newFoodItemDocument.append("_id", foodItemDocument.get("_id")); continue;}
+        if (isValidModel(modelDocument, schema)) return modelDocument;
+        Document newModelDocument = new Document();
+
+        for (Map.Entry<String, Object> schemaEntry : schema.entrySet()) {
+            final String schemaEntryName = schemaEntry.getKey();
+            final Class schemaEntryClass = schemaEntry.getValue().getClass();
+
             boolean contain = false;
 
-            for (Map.Entry<String, Object> foodItemSchemaEntry : foodItemDocument.entrySet()) {
-                final String schemaEntryName = foodItemSchemaEntry.getKey();
-                final Class schemaEntryClass = foodItemSchemaEntry.getValue().getClass();
+            for (Map.Entry<String, Object> modelEntry : modelDocument.entrySet()) {
+                final String modelEntryName = modelEntry.getKey();
+                final Class modelEntryClass = modelEntry.getValue().getClass();
+                if (modelEntryName.equals("_id")) {newModelDocument.append("_id", modelEntry.getValue()); continue;}
 
-                if (currentSchemaEntryName.equals(schemaEntryName) && currentSchemaEntryValueClass.equals(schemaEntryClass)) {
+                if (modelEntryName.equals(schemaEntryName) && modelEntryClass.equals(schemaEntryClass)) {
                     contain = true;
-                    newFoodItemDocument.append(schemaEntryName, foodItemSchemaEntry.getValue());
+                    newModelDocument.append(modelEntryName, modelEntry.getValue());
                     break;
                 }
             }
             if (!contain) {
-                if (currentSchemaEntryValueClass.equals(Double.class))
-                    newFoodItemDocument.append(currentSchemaEntryName, new Double(0));
+                if (schemaEntryClass.equals(Double.class))
+                    newModelDocument.append(schemaEntryName, new Double(0));
                 else
-                    newFoodItemDocument.append(currentSchemaEntryName,currentSchemaEntryValueClass.newInstance());
+                    newModelDocument.append(schemaEntryName,schemaEntryClass.newInstance());
             }
         }
 
-        //enable after debug
-        getDBDriver().update(Constants.FOOD_COLLECTION, foodItemDocument.get("name").toString(), newFoodItemDocument);
-        return newFoodItemDocument;
+        //TODO: enable after debug
+        //getDBDriver().update(fromCollection, modelDocument.get("name").toString(), newModelDocument);
+        return newModelDocument;
     }
 }

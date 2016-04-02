@@ -1,4 +1,4 @@
-package com.ufood.API;
+package com.ufood.api;
 
 /**
  * Created by pdudenkov on 06.01.2016.

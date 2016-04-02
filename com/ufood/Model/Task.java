@@ -1,13 +1,13 @@
-package com.ufood.Model;
+package com.ufood.model;
 
-import com.ufood.DB.Documentable;
+import com.ufood.db.Documentable;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.ufood.DB.Constants.ACTIVITY_LEVEL.*;
-import static com.ufood.DB.DBDriver.*;
-import static com.ufood.DB.Constants.*;
+import static com.ufood.db.Constants.ACTIVITY_LEVEL.*;
+import static com.ufood.db.DBDriver.*;
+import static com.ufood.db.Constants.*;
 
 public class Task implements Documentable {
     private String userID;

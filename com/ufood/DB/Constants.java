@@ -1,5 +1,9 @@
-package com.ufood.DB;
+package com.ufood.db;
 
+import com.ufood.model.*;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public abstract class Constants {
@@ -28,6 +32,17 @@ public abstract class Constants {
     public static enum SEX {MALE, FEMALE};
     public static enum ACTIVITY_LEVEL {SEDENTARY, LIGHT, MODERATE, HIGH, EXTRA_HIGH};
     public static enum BODY_TYPE {FAT, NORMAL, ATHLETE, THIN};
+
+    public final static Map<String, Class> mapClassByDatabaseColletion;
+
+    static {
+        mapClassByDatabaseColletion = new HashMap<>();
+        mapClassByDatabaseColletion.put(FOOD_COLLECTION, FoodItem.class);
+        mapClassByDatabaseColletion.put(DISH_COLLECTION, Dish.class);
+        mapClassByDatabaseColletion.put(MENU_COLLECTION, Menu.class);
+        mapClassByDatabaseColletion.put(TASK_COLLECTION, Task.class);
+        mapClassByDatabaseColletion.put(RESULT_COLLECTION, Result.class);
+    }
 
     /**********Multipliers for BMR (Basal Metabolic Rate)
      ** Sedentary - little or no excercise      - 1.2

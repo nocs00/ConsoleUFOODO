@@ -1,4 +1,4 @@
-package com.ufood.DB;
+package com.ufood.db;
 
 /**
  * Created by pdudenkov on 30.12.2015.

@@ -1,10 +1,10 @@
-package com.ufood.Model;
+package com.ufood.model;
 
-import com.ufood.DB.Documentable;
+import com.ufood.db.Documentable;
 import org.bson.Document;
 import java.util.*;
-import static com.ufood.DB.Constants.*;
-import static com.ufood.DB.DBDriver.*;
+import static com.ufood.db.Constants.*;
+import static com.ufood.db.DBDriver.*;
 
 public class Dish extends FoodItem implements Documentable {
     private String name;

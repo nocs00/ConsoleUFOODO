@@ -1,7 +1,7 @@
 package com.ufood.util;
 
-import com.ufood.DB.Constants;
-import com.ufood.Model.*;
+import com.ufood.db.Constants;
+import com.ufood.model.*;
 import org.bson.Document;
 
 import javax.imageio.ImageIO;
@@ -9,8 +9,8 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 
-import static com.ufood.DB.Constants.*;
-import static com.ufood.DB.DBDriver.getDBDriver;
+import static com.ufood.db.Constants.*;
+import static com.ufood.db.DBDriver.getDBDriver;
 import org.apache.commons.codec.binary.*;
 
 /**
@@ -33,7 +33,7 @@ public abstract class Engine {
     }
 
     public static String isLoggedIn(String encodedHeaderBase64) {
-        String decodedHeader = new String(Base64.decodeBase64(encodedHeaderBase64));
+        String decodedHeader = new String(Base64.decodeBase64(encodedHeaderBase64.getBytes()));
         return decodedHeader;
     }
 

@@ -1,9 +1,9 @@
-package com.ufood.Model;
+package com.ufood.model;
 
-import com.ufood.DB.Documentable;
+import com.ufood.db.Documentable;
 import org.bson.Document;
 import java.util.ArrayList;
-import static com.ufood.DB.Constants.*;
+import static com.ufood.db.Constants.*;
 
 public class Menu implements Documentable {
     private String userID;

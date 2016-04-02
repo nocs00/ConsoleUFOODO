@@ -1,4 +1,4 @@
-package com.ufood.DB;
+package com.ufood.db;
 
 import org.bson.Document;
 

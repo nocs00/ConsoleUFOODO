@@ -1,14 +1,14 @@
 package com.ufood;
 
-//import com.ufood.API.Control;
-//import static com.ufood.DB.Constants.*;
-//import static com.ufood.DB.DBDriver.getDBDriver;
+//import com.ufood.api.Control;
+//import static com.ufood.db.Constants.*;
+//import static com.ufood.db.DBDriver.getDBDriver;
 //
-import static com.ufood.DB.Constants.*;
-//import com.ufood.Model.Dish;
-//import com.ufood.Model.FoodItem;
-//import com.ufood.Model.Result;
-//import com.ufood.Model.Task;
+import static com.ufood.db.Constants.*;
+//import com.ufood.model.Dish;
+//import com.ufood.model.FoodItem;
+//import com.ufood.model.Result;
+//import com.ufood.model.Task;
 //import com.ufood.schema.FoodItemSchema;
 //import com.ufood.util.Engine;
 //import org.bson.Document;
@@ -24,12 +24,10 @@ import static com.ufood.DB.Constants.*;
 //import com.sun.jersey.api.client.config.ClientConfig;
 //import com.sun.jersey.api.client.config.DefaultClientConfig;
 
-import com.ufood.schema.SchemaStorage;
 import com.ufood.util.Engine;
 import org.bson.Document;
 
 import javax.ws.rs.core.MediaType;
-import java.util.Map;
 
 /**
  * Created by pdudenkov on 15.01.2016.
