@@ -1,33 +1,35 @@
 package com.ufood.db;
 
 import com.ufood.model.*;
+import com.ufood.properties.MyProperties;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 public abstract class Constants {
     public final static String RESOURCES_BUNDLE_PATH = "com.ufood.resources.";
-    private final static ResourceBundle res = ResourceBundle.getBundle(RESOURCES_BUNDLE_PATH+"constants");
+    private final static Properties props = MyProperties.getProps();
 
-    public final static String DATABASE_NAME =      res.getString("database.name");
-    public final static String FOOD_COLLECTION =    res.getString("food.collection");
-    public final static String DISH_COLLECTION =    res.getString("dish.collection");
-    public final static String MENU_COLLECTION =    res.getString("menu.collection");
-    public final static String TASK_COLLECTION =    res.getString("task.collection");
-    public final static String RESULT_COLLECTION =  res.getString("result.collection");
-    public final static String USER_ID =            res.getString("user.id");
-    public final static String IMAGE_PATH_DEBUG =   res.getString("image.path.debug");
-    public final static String IMAGE_PATH =         res.getString("image.path");
-    public final static String IMAGE_BASE_URL =     res.getString("image.base.url");
-    public final static String RESOURCES_PATH =     res.getString("relative.path.to.resources");
+    public final static String DATABASE_NAME =      props.getProperty("database.name");
+    public final static String FOOD_COLLECTION =    props.getProperty("food.collection");
+    public final static String DISH_COLLECTION =    props.getProperty("dish.collection");
+    public final static String MENU_COLLECTION =    props.getProperty("menu.collection");
+    public final static String TASK_COLLECTION =    props.getProperty("task.collection");
+    public final static String RESULT_COLLECTION =  props.getProperty("result.collection");
+    public final static String USER_ID =            props.getProperty("user.id");
+    public final static String IMAGE_PATH_DEBUG =   props.getProperty("image.path.debug");
+    public final static String IMAGE_PATH =         props.getProperty("image.path");
+    public final static String IMAGE_BASE_URL =     props.getProperty("image.base.url");
+    public final static String RESOURCES_PATH =     props.getProperty("relative.path.to.resources");
 
-    public final static String SCHEMA_FILENAME_FOODITEM =   res.getString("schema.file.name.fooditem");
-    public final static String SCHEMA_FILENAME_DISH =       res.getString("schema.file.name.dish");
-    public final static String SCHEMA_FILENAME_TASK =       res.getString("schema.file.name.task");
-    public final static String SCHEMA_FILENAME_RESULT =     res.getString("schema.file.name.result");
-    public final static String SCHEMA_FILENAME_IMAGEURL =   res.getString("schema.file.name.imageurl");
-    public final static String SCHEMA_FILENAME_MENU =       res.getString("schema.file.name.menu");
+    public final static String SCHEMA_FILENAME_FOODITEM =   props.getProperty("schema.file.name.fooditem");
+    public final static String SCHEMA_FILENAME_DISH =       props.getProperty("schema.file.name.dish");
+    public final static String SCHEMA_FILENAME_TASK =       props.getProperty("schema.file.name.task");
+    public final static String SCHEMA_FILENAME_RESULT =     props.getProperty("schema.file.name.result");
+    public final static String SCHEMA_FILENAME_IMAGEURL =   props.getProperty("schema.file.name.imageurl");
+    public final static String SCHEMA_FILENAME_MENU =       props.getProperty("schema.file.name.menu");
 
     public static enum SEX {MALE, FEMALE};
     public static enum ACTIVITY_LEVEL {SEDENTARY, LIGHT, MODERATE, HIGH, EXTRA_HIGH};

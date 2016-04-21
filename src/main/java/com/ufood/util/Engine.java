@@ -24,6 +24,7 @@ public abstract class Engine {
 
         String line = null;
         while ((line=bufferedReader.readLine())!=null) {
+            if (line.startsWith("//")) continue;
             sb.append(line);
         }
 

@@ -38,7 +38,7 @@ public class DBDriver implements DBInterface { //singleton
     private Document checkSchema(String schemaName, Document document) {
         Document copy = new Document(document);
         try {
-            if (schemaName.equals(FOOD_COLLECTION)) document = SchemaValidator.checkAndApplySchema(document);
+            if (schemaName.equals(FOOD_COLLECTION)) document = SchemaValidator.checkAndApplySchema(schemaName, document);
             return document;
         } catch (Exception e) {
             logger.log(Level.SEVERE, String.format("Try to apply valid schema for: %s", schemaName));

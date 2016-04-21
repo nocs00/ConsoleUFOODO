@@ -46,6 +46,12 @@ public class Control {
 //        return Response.status(200).build();
 //    }
 
+    @Path("/check-deployment")
+    @GET
+    @Produces("text/plain")
+    public String checkDeployment() {
+        return "maven plus tomcat automatic deployment successful";
+    }
 
     @Path(MENU)
     @PUT

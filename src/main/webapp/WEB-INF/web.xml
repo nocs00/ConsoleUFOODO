@@ -9,7 +9,7 @@
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>org.codehaus.jackson.jaxrs;com.ufood; com.ufood.Model</param-value>
+            <param-value>org.codehaus.jackson.jaxrs; com.ufood; com.ufood.model</param-value>
         </init-param>
         <!--init-param>
             <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
