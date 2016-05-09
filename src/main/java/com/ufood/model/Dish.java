@@ -85,7 +85,7 @@ public class Dish extends FoodItem implements Documentable {
 
         for (Document dishDocument : getDBDriver().selectAll(DISH_COLLECTION)) {
             boolean containAll = true;
-            for (Object food : (Iterable)dishDocument.get(FOOD_COLLECTION)) { //TODO: why choose apple salad
+            for (Object food : (Iterable)dishDocument.get(FOOD_COLLECTION)) {
                 if (food instanceof String || food instanceof Document ) {
                     if (food instanceof Document)
                         food = (String)((Document)food).get("name");

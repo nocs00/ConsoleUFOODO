@@ -1,12 +1,15 @@
 package com.ufood.db;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import com.ufood.schema.SchemaStorage;
 import com.ufood.schema.SchemaValidator;
 import org.bson.Document;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +18,10 @@ import static com.ufood.db.Constants.*;
  * Created by pdudenkov on 30.12.2015.
  */
 public class DBDriver implements DBInterface { //singleton
-    private final static MongoDatabase DB = new MongoClient().getDatabase(DATABASE_NAME);
+    private final static MongoCredential credential = MongoCredential.createCredential("root", "ufoodo", "root".toCharArray());
+    private final static MongoClient client = new MongoClient(new ServerAddress("ds013172.mlab.com", 13172), Arrays.asList(credential));
+    private final static MongoDatabase DB = client.getDatabase("ufoodo");
+    //private final static MongoDatabase DB = new MongoClient().getDatabase(DATABASE_NAME);
     private static DBDriver instance;
     private Logger logger = Logger.getLogger(DBDriver.class.getName());
 
