@@ -18,12 +18,26 @@ import static com.ufood.db.Constants.*;
  * Created by pdudenkov on 30.12.2015.
  */
 public class DBDriver implements DBInterface { //singleton
-    private final static MongoCredential credential = MongoCredential.createCredential("root", "ufoodo", "root".toCharArray());
-    private final static MongoClient client = new MongoClient(new ServerAddress("ds013172.mlab.com", 13172), Arrays.asList(credential));
-    private final static MongoDatabase DB = client.getDatabase("ufoodo");
-    //private final static MongoDatabase DB = new MongoClient().getDatabase(DATABASE_NAME);
+//        To connect using the mongo shell:
+//        mongo ds013172.mlab.com:13172/ufoodo -u <dbuser> -p <dbpassword>
+//                To connect using a driver via the standard MongoDB URI (what's this?):
+//        mongodb://<dbuser>:<dbpassword>@ds013172.mlab.com:13172/ufoodo
+//    private final static MongoCredential credential = MongoCredential.createCredential("root", "ufoodo", "root".toCharArray());
+//    private final static MongoClient client = new MongoClient(new ServerAddress("ds013172.mlab.com", 13172), Arrays.asList(credential));
+//    private final static MongoDatabase DB = client.getDatabase("ufoodo");
+    private final static MongoDatabase DB;
     private static DBDriver instance;
     private Logger logger = Logger.getLogger(DBDriver.class.getName());
+    private final static boolean DEBUG = true;
+
+    static {
+        if (DEBUG) {
+            MongoClient client = new MongoClient("146.185.165.237", 27017);
+            DB = client.getDatabase("test");
+        } else {
+            DB = new MongoClient().getDatabase(DATABASE_NAME);;
+        }
+    }
 
     private DBDriver() {
 

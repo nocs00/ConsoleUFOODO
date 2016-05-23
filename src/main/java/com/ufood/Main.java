@@ -1,5 +1,9 @@
 package com.ufood;
 
+import com.mongodb.MongoClient;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoDatabase;
 import com.ufood.api.Control;
 import static com.ufood.db.Constants.*;
 import static com.ufood.db.DBDriver.getDBDriver;
@@ -13,6 +17,7 @@ import com.ufood.util.Engine;
 import org.bson.Document;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -34,8 +39,7 @@ import javax.ws.rs.core.MediaType;
  */
 public class Main {
     public static void main(String[] args)  throws Throwable {
-        FoodItem foodItem = new FoodItem();
-        Document document = getDBDriver().select(FOOD_COLLECTION);
+        Document foodItem = getDBDriver().select(FOOD_COLLECTION);
     }
 
 //    public static void sendLoginRequest() {
