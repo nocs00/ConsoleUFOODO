@@ -24,13 +24,6 @@ public abstract class Constants {
     public final static String IMAGE_BASE_URL =     props.getProperty("image.base.url");
     public final static String RESOURCES_PATH =     props.getProperty("relative.path.to.resources");
 
-    public final static String SCHEMA_FILENAME_FOODITEM =   props.getProperty("schema.file.name.fooditem");
-    public final static String SCHEMA_FILENAME_DISH =       props.getProperty("schema.file.name.dish");
-    public final static String SCHEMA_FILENAME_TASK =       props.getProperty("schema.file.name.task");
-    public final static String SCHEMA_FILENAME_RESULT =     props.getProperty("schema.file.name.result");
-    public final static String SCHEMA_FILENAME_IMAGEURL =   props.getProperty("schema.file.name.imageurl");
-    public final static String SCHEMA_FILENAME_MENU =       props.getProperty("schema.file.name.menu");
-
     public static enum SEX {MALE, FEMALE};
     public static enum ACTIVITY_LEVEL {SEDENTARY, LIGHT, MODERATE, HIGH, EXTRA_HIGH};
     public static enum BODY_TYPE {FAT, NORMAL, ATHLETE, THIN};

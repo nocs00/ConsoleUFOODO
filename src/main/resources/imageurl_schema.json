@@ -1,6 +1,0 @@
-//imageurl schema
-{
-  "width"   : 0.0,
-  "height"  : 0.0,
-  "url"     : "some_url"
-}
