@@ -5,8 +5,6 @@ import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
-import com.ufood.schema.SchemaStorage;
-import com.ufood.schema.SchemaValidator;
 import org.bson.Document;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,39 +39,21 @@ public class DBDriver implements DBInterface { //singleton
         DB.getCollection(where).insertOne((Document)content);
     }
 
-    private Document checkSchema(String schemaName, Document document) {
-        Document copy = new Document(document);
-        try {
-            if (schemaName.equals(FOOD_COLLECTION)) document = SchemaValidator.checkAndApplySchema(schemaName, document);
-            return document;
-        } catch (Exception e) {
-            logger.log(Level.SEVERE, String.format("Try to apply valid schema for: %s", schemaName));
-            return copy;
-        }
-    }
-
     @Override
     public ArrayList<Document> selectAll(String from) {
         ArrayList<Document> list = iterableToList(DB.getCollection(from).find());
-        for (Document document : list)
-            document = checkSchema(from, document);
-
         return list;
     }
 
     @Override
     public ArrayList<Document> selectAll(String from, Object content) {
         ArrayList<Document> list = iterableToList(DB.getCollection(from).find((Document)content));;
-//        for (Document document : list)
-//            document = checkSchema(from, document);
-
         return list;
     }
 
     @Override
     public Document select(String from, String what) {
         Document document = DB.getCollection(from).find(new Document("name", what)).first();
-//        document = checkSchema(from, document);
         return document;
     }
 
@@ -87,8 +67,6 @@ public class DBDriver implements DBInterface { //singleton
                 //.projection(
                 //new Document("name", 1).append("_id", 0))
         );
-//        for (Document document : list)
-//            document = checkSchema(from, document);
 
         return list;
     }
@@ -96,14 +74,12 @@ public class DBDriver implements DBInterface { //singleton
     @Override
     public Document select(String from) {
         Document document = DB.getCollection(from).find().first();
-        //document = checkSchema(from, document);
         return document;
     }
 
     @Override
     public void update(String from, String what, Object content) {
         Document document = (Document)content;
-        //document = checkSchema(from, document);
         DB.getCollection(from).replaceOne(new Document("name", what), document) ; //possible would need to improve this decision;
     }
 

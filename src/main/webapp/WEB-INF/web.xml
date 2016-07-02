@@ -11,26 +11,11 @@
             <param-name>com.sun.jersey.config.property.packages</param-name>
             <param-value>org.codehaus.jackson.jaxrs; com.ufood; com.ufood.model</param-value>
         </init-param>
-        <!--init-param>
-            <param-name>com.sun.jersey.spi.container.ContainerRequestFilters</param-name>
-            <param-value>com.sun.jersey.api.container.filter.LoggingFilter;com.oleksiykovtun.mongorestapp.rest.RequestAuthorizationFilter</param-value>
-        </init-param-->
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>JerseyServlet</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
-
-    <!-- HTTPS only
-    <security-constraint
-        <web-resource-collection>
-            <web-resource-name>all</web-resource-name>
-            <url-pattern>/*</url-pattern>
-        </web-resource-collection>
-        <user-data-constraint>
-            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint-->
 
 </web-app>
