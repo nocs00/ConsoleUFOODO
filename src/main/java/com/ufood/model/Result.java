@@ -1,13 +1,22 @@
 package com.ufood.model;
 
-import com.ufood.db.Documentable;
-import org.bson.Document;
-import java.util.ArrayList;
-import static com.ufood.db.Constants.*;
+import com.ufood.db.dao.mongodb.AbstractEntity;
+import org.mongodb.morphia.annotations.Entity;
 
-public class Result implements Documentable {
-    private ArrayList<Menu> menus;
+import java.util.List;
+
+@Entity
+public class Result extends AbstractEntity {
+    private List<Menu> menus;
     private Task task;
+
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
 
     public Task getTask() {
         return task;
@@ -15,26 +24,5 @@ public class Result implements Documentable {
 
     public void setTask(Task task) {
         this.task = task;
-    }
-
-    public ArrayList<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(ArrayList<Menu> menus) {
-        this.menus = menus;
-    }
-
-    @Override
-    public Document getDocument() {
-        //TODO: for multiple menus
-        Document resultDocument = new Document(USER_ID, this.task.getUserID());
-        resultDocument.append("task", task.getDocument());
-        for (int j = 0; j < this.menus.size(); j++) {
-            Menu menu = this.menus.get(j);
-            Document menuDocument = menu.getDocument();
-            resultDocument.append("menu"+j, menuDocument);
-        }
-        return resultDocument;
     }
 }

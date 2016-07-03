@@ -1,45 +1,56 @@
 package com.ufood.model;
 
-import com.ufood.db.Documentable;
-import org.bson.Document;
+import com.ufood.db.dao.mongodb.AbstractEntity;
+import org.mongodb.morphia.annotations.Entity;
 
-import java.util.ArrayList;
+import java.util.List;
 
-import static com.ufood.db.Constants.*;
-import static com.ufood.db.DBDriver.*;
-
-
-public class FoodItem implements Documentable {
+@Entity
+public class FoodItem extends AbstractEntity {
     private String name;
+
     private double calories;//on 100 gramm
     private double protein;
     private double carbohydrate;
     private double fat;
     private double quantity = 1d;
-    private ArrayList imagesURL;
 
-    public ArrayList getImagesURL() {
-        return imagesURL;
-    }
+    private List imagesURL;
 
-    public void setImagesURL(ArrayList imagesURL) {
-        this.imagesURL = new ArrayList(imagesURL);
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public double getCalories() {
+        return calories;
+    }
+
     public void setCalories(double calories) {
         this.calories = calories;
+    }
+
+    public double getProtein() {
+        return protein;
     }
 
     public void setProtein(double protein) {
         this.protein = protein;
     }
 
+    public double getCarbohydrate() {
+        return carbohydrate;
+    }
+
     public void setCarbohydrate(double carbohydrate) {
         this.carbohydrate = carbohydrate;
+    }
+
+    public double getFat() {
+        return fat;
     }
 
     public void setFat(double fat) {
@@ -54,58 +65,11 @@ public class FoodItem implements Documentable {
         this.quantity = quantity;
     }
 
-    public FoodItem (Document bson) {
-        name = bson.get("name").toString();
-        calories = new Double(bson.get("calories").toString());
-        protein = new Double(bson.get("proteins").toString());
-        carbohydrate = new Double(bson.get("carbohydrates").toString());
-        fat = new Double(bson.get("fats").toString());
-        imagesURL = (ArrayList)bson.get("imagesURL");
+    public List getImagesURL() {
+        return imagesURL;
     }
 
-    public FoodItem() {
-
-    }
-
-    public static FoodItem getFoodItemByName(String name) {
-        FoodItem foodItem = null;
-        Document document = getDBDriver().select(FOOD_COLLECTION, name);
-        if (document != null)
-            foodItem  = new FoodItem(document);
-        return foodItem;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public Document getDocument() {
-        return new Document("name", this.name)
-                .append("calories", this.calories)
-                .append("proteins", this.protein)
-                .append("carbohydrates", this.carbohydrate)
-                .append("fats", this.fat)
-                .append("quantity", this.quantity)
-                .append("imagesURL", this.imagesURL!=null?this.imagesURL:new ArrayList());
-    }
-
-    public double getFat() {
-        return fat;
-    }
-
-    public double getCarbohydrate() {
-
-        return carbohydrate;
-    }
-
-    public double getProtein() {
-
-        return protein;
-    }
-
-    public double getCalories() {
-
-        return calories;
+    public void setImagesURL(List imagesURL) {
+        this.imagesURL = imagesURL;
     }
 }

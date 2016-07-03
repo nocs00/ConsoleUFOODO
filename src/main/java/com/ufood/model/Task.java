@@ -1,38 +1,28 @@
 package com.ufood.model;
 
-import com.ufood.db.Documentable;
-import org.bson.Document;
-import java.util.ArrayList;
-import java.util.Date;
 
-import static com.ufood.db.Constants.ACTIVITY_LEVEL.*;
-import static com.ufood.db.DBDriver.*;
+import com.ufood.db.dao.mongodb.AbstractEntity;
+import org.mongodb.morphia.annotations.Entity;
+
+import java.util.List;
+
 import static com.ufood.db.Constants.*;
+import static com.ufood.db.Constants.ACTIVITY_LEVEL.*;
 
-public class Task implements Documentable {
-    private String userID;
+@Entity
+public class Task extends AbstractEntity {
+    //todo link to user owner
     private SEX sex = SEX.MALE;
     private int age = 25;
     private double height = 175d;
     private double weight = 75d;
-    private ACTIVITY_LEVEL activity_level = LIGHT;
-    private BODY_TYPE body_type = BODY_TYPE.NORMAL;
-    private ArrayList<String> foodItems;
+    private ACTIVITY_LEVEL activityLevel = LIGHT;
+    private BODY_TYPE bodyType = BODY_TYPE.NORMAL;
+    private List<String> foodItemNames;
     private boolean metricUS = false;
 
-    public boolean isMetricUS() {
-        return metricUS;
-    }
-
-    public void convertMetric() {
-        if (metricUS) {
-            height *= 2.54d;
-            weight *= 0.45359237d;
-        }
-    }
-
-    public void setMetricUS(int metricUS) {
-        this.metricUS = metricUS==0?false:true;
+    public SEX getSex() {
+        return sex;
     }
 
     public int getAge() {
@@ -59,12 +49,24 @@ public class Task implements Documentable {
         this.weight = weight;
     }
 
-    public ACTIVITY_LEVEL getActivity_level() {
-        return activity_level;
+    public List<String> getFoodItemNames() {
+        return foodItemNames;
     }
 
-    public String getActivity_level_str() {
-        switch (this.activity_level) {
+    public void setFoodItemNames(List<String> foodItemNames) {
+        this.foodItemNames = foodItemNames;
+    }
+
+    public boolean isMetricUS() {
+        return metricUS;
+    }
+
+    public void setMetricUS(boolean metricUS) {
+        this.metricUS = metricUS;
+    }
+
+    public String getActivityLevel() {
+        switch (this.activityLevel) {
             case SEDENTARY:
                 return "sedentary";
             case LIGHT:
@@ -80,35 +82,31 @@ public class Task implements Documentable {
         }
     }
 
-    public void setActivity_level(String activity_level) {
+    public void setActivityLevel(String activity_level) {
         switch (activity_level) {
             case "sedentary" :
-                this.activity_level = SEDENTARY;
+                this.activityLevel = SEDENTARY;
                 break;
             case "light" :
-                this.activity_level = LIGHT;
+                this.activityLevel = LIGHT;
                 break;
             case "moderate" :
-                this.activity_level = MODERATE;
+                this.activityLevel = MODERATE;
                 break;
             case "high" :
-                this.activity_level = HIGH;
+                this.activityLevel = HIGH;
                 break;
             case "extra_high" :
-                this.activity_level = EXTRA_HIGH;
+                this.activityLevel = EXTRA_HIGH;
                 break;
             default:
-                this.activity_level = LIGHT;
+                this.activityLevel = LIGHT;
                 break;
         }
     }
 
-    public BODY_TYPE getBody_type() {
-        return body_type;
-    }
-
-    public String getBody_type_str() {
-        switch (this.body_type) {
+    public String getBodyType() {
+        switch (this.bodyType) {
             case FAT:
                 return "fat";
             case NORMAL:
@@ -122,62 +120,24 @@ public class Task implements Documentable {
         }
     }
 
-    public void setBody_type(String body_type) {
+    public void setBodyType(String body_type) {
         switch (body_type) {
             case "fat" :
-                this.body_type = BODY_TYPE.FAT;
+                this.bodyType = BODY_TYPE.FAT;
                 break;
             case "normal" :
-                this.body_type = BODY_TYPE.NORMAL;
+                this.bodyType = BODY_TYPE.NORMAL;
                 break;
             case "athlete" :
-                this.body_type = BODY_TYPE.ATHLETE;
+                this.bodyType = BODY_TYPE.ATHLETE;
                 break;
             case "thin" :
-                this.body_type = BODY_TYPE.THIN;
+                this.bodyType = BODY_TYPE.THIN;
                 break;
             default:
-                this.body_type = BODY_TYPE.NORMAL;
+                this.bodyType = BODY_TYPE.NORMAL;
                 break;
         }
-    }
-
-    public static Task getTask() {
-        Date now = new Date();
-        Task task = new Task();
-        Document taskDocument = getDBDriver().select(TASK_COLLECTION);
-        if (taskDocument == null) return null;
-        getDBDriver().delete(TASK_COLLECTION, taskDocument);
-
-        task.userID = taskDocument.getString(USER_ID);
-
-        if ("male".equals(taskDocument.getString("sex")))
-            task.sex = SEX.MALE;
-        else if ("female".equals(taskDocument.getString("sex")))
-            task.sex = SEX.FEMALE;
-        else
-            task.sex = null;
-
-        task.foodItems = new ArrayList<String>((ArrayList)taskDocument.get("food_items"));
-        Date after = new Date();
-        System.out.println("getTask:"+(after.getTime()-now.getTime()) + " ms");
-        return task;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public SEX getSex() {
-        return sex;
-    }
-
-    public ArrayList<String> getFoodItems() {
-        return foodItems;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
     public void setSex(String sex) {
@@ -188,29 +148,5 @@ public class Task implements Documentable {
         }
         if (this.sex == null)
             this.sex = SEX.MALE;
-    }
-
-    public void setFoodItems(ArrayList<String> foodItems) {
-        this.foodItems = foodItems;
-    }
-
-    @Override
-    public Document getDocument() {
-        ArrayList foodItemsObject = new ArrayList(this.foodItems);
-        return new Document()
-                .append("properties", new Document()
-                        .append("sex", this.sex==SEX.MALE?"male":"female")
-                        .append("age", this.age)
-                        .append("height", this.height)
-                        .append("weight", this.weight)
-                        .append("activity_level", this.getActivity_level_str())
-                        .append("body_type", this.getBody_type_str())
-                        .append("metricUS", this.isMetricUS()?1:0))
-                .append("foodItems", foodItemsObject);
-    }
-
-    @Override
-    public String toString() {
-        return userID.toString()+sex+foodItems;
     }
 }
