@@ -1,39 +1,72 @@
 package com.ufood.model;
 
-import com.ufood.db.Documentable;
-import org.bson.Document;
-import java.util.ArrayList;
-import static com.ufood.db.DBDriver.*;
+import com.ufood.db.Constants;
+import com.ufood.db.dao.mongodb.AbstractEntity;
+import org.mongodb.morphia.annotations.Entity;
+
 import static com.ufood.db.Constants.*;
 
 /**
  * Created by pdudenkov on 30.12.2015.
  */
-public class User implements Documentable {
-    private String userID;
+
+@Entity
+public class User extends AbstractEntity {
+    //todo link to user owner
     private SEX sex = SEX.MALE;
+
     private int age = 25;
     private double height = 175d;
     private double weight = 75d;
-    private ACTIVITY_LEVEL activity_level = ACTIVITY_LEVEL.LIGHT;
-    private BODY_TYPE body_type = BODY_TYPE.NORMAL;
 
-//    public User(String userID) {
-//        this.userID = userID;
-//    }
+    private ACTIVITY_LEVEL activityLevel = ACTIVITY_LEVEL.LIGHT;
+    private BODY_TYPE bodyType = BODY_TYPE.NORMAL;
 
-    public ArrayList<Menu> getUserMenus() {
-        ArrayList<Document> userMenus = getDBDriver().selectAll(MENU_COLLECTION, new Document(USER_ID, this.userID));
-
-        ArrayList<Menu> menus = new ArrayList<Menu>();
-        for (Document menuDocument: userMenus) {
-            menus.add(Menu.documentToMenu(menuDocument));
-        }
-        return menus;
+    public SEX getSex() {
+        return sex;
     }
 
-    @Override
-    public Document getDocument() {
-        return new Document(USER_ID, this.userID);
+    public void setSex(SEX sex) {
+        this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public ACTIVITY_LEVEL getActivityLevel() {
+        return activityLevel;
+    }
+
+    public void setActivityLevel(ACTIVITY_LEVEL activityLevel) {
+        this.activityLevel = activityLevel;
+    }
+
+    public BODY_TYPE getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BODY_TYPE bodyType) {
+        this.bodyType = bodyType;
     }
 }

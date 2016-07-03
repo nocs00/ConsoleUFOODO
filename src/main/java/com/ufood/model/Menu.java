@@ -1,79 +1,58 @@
 package com.ufood.model;
 
-import com.ufood.db.Documentable;
-import org.bson.Document;
-import java.util.ArrayList;
-import static com.ufood.db.Constants.*;
+import com.ufood.db.dao.mongodb.AbstractEntity;
+import org.mongodb.morphia.annotations.Entity;
 
-public class Menu implements Documentable {
-    private String userID;
-    private ArrayList<Dish> dishes;
+import java.util.List;
+
+@Entity
+public class Menu extends AbstractEntity {
     private double calories;//on 100 gramm
     private double protein;
     private double carbohydrate;
     private double fat;
 
-    public Menu(String userID) {
-        this.userID = userID;
-        dishes = new ArrayList<Dish>();
-        this.calories = 0;
-        this.protein = 0;
-        this.carbohydrate = 0;
-        this.fat = 0;
+    private List<Dish> dishes;
+
+    //todo link to user owner
+
+    public double getCalories() {
+        return calories;
     }
 
-    public static Menu documentToMenu(Document menuDocument) {
-        Menu menu = new Menu(menuDocument.getString(USER_ID));
-        ArrayList<Dish> dishes = new ArrayList<Dish>();
-        for (String dishName : (String[])menuDocument.get(DISH_COLLECTION)) {
-            Dish dish = new Dish(dishName);
-            dishes.add(dish);
-        }
-        menu.dishes = dishes;
-        menu.countNutrients(menu.dishes);
-        return menu;
+    public void setCalories(double calories) {
+        this.calories = calories;
     }
 
-    public void addDish(Dish dish) {
-        this.dishes.add(dish);
-        this.calories += dish.getCalories();
-        this.protein += dish.getProtein();
-        this.carbohydrate += dish.getCarbohydrate();
-        this.fat += dish.getFat();
+    public double getProtein() {
+        return protein;
     }
 
-    private void countNutrients(ArrayList<Dish> dishes) {
-        for (Dish dish : dishes) {
-            this.calories += dish.getCalories();
-            this.protein += dish.getProtein();
-            this.carbohydrate += dish.getCarbohydrate();
-            this.fat += dish.getFat();
-        }
+    public void setProtein(double protein) {
+        this.protein = protein;
     }
 
-    public ArrayList<Dish> getDishes() {
+    public double getCarbohydrate() {
+        return carbohydrate;
+    }
+
+    public void setCarbohydrate(double carbohydrate) {
+        this.carbohydrate = carbohydrate;
+    }
+
+    public double getFat() {
+        return fat;
+    }
+
+    public void setFat(double fat) {
+        this.fat = fat;
+    }
+
+    public List<Dish> getDishes() {
         return dishes;
     }
 
-    @Override
-    public Document getDocument() {
-//        ArrayList dishNames = new ArrayList();
-//        for (Dish d : this.dishes) {
-//            dishNames.add(d.getName());
-//        }
-
-        ArrayList dishDocuments = new ArrayList();
-        for (Dish d : this.dishes) {
-            dishDocuments.add(d.getDocument());
-        }
-
-        return new Document()
-                .append("calories", this.calories)
-                .append("proteins", this.protein)
-                .append("carbohydrates", this.carbohydrate)
-                .append("fats", this.fat)
-                .append(DISH_COLLECTION, dishDocuments);
-                //.append(DISH_COLLECTION, dishNames);
-
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 }

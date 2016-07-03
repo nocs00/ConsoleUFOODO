@@ -3,10 +3,8 @@ package com.ufood.api;
 /**
  * Created by pdudenkov on 06.01.2016.
  */
-import com.ufood.db.DBDriver;
 import com.ufood.model.Dish;
 import com.ufood.model.FoodItem;
-import com.ufood.util.Engine;
 import com.ufood.model.Result;
 import com.ufood.model.Task;
 import org.bson.Document;
@@ -53,18 +51,18 @@ public class Control {
         return "maven plus tomcat automatic deployment successful";
     }
 
-    @Path(MENU)
-    @PUT
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String getMenu(
-            Task task
-    ) {
-        Result result = Engine.getResult(task);
-        Engine.insertResult(result);
-
-        return result.getDocument().toJson();
-    }
+//    @Path(MENU)
+//    @PUT
+//    @Produces("text/plain")
+//    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public String getMenu(
+//            Task task
+//    ) {
+//        Result result = Engine.getResult(task);
+//        Engine.insertResult(result);
+//
+//        return result.getDocument().toJson();
+//    }
 
     @Path(USER)
     @GET
@@ -83,15 +81,15 @@ public class Control {
     }
 
 
-    @Path(USER+LOGIN)
-    @POST
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String login(@HeaderParam(HttpHeaders.AUTHORIZATION) String authorizationInfo) {
-        final String decoded = Engine.isLoggedIn(authorizationInfo);
-        Document root = new Document("message", String.format("Your authorization http header: %s ; original: %s", decoded, authorizationInfo));
-        return root.toJson();
-    }
+//    @Path(USER+LOGIN)
+//    @POST
+//    @Produces("text/plain")
+//    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public String login(@HeaderParam(HttpHeaders.AUTHORIZATION) String authorizationInfo) {
+//        final String decoded = Engine.isLoggedIn(authorizationInfo);
+//        Document root = new Document("message", String.format("Your authorization http header: %s ; original: %s", decoded, authorizationInfo));
+//        return root.toJson();
+//    }
 
     @Path(USER+HISTORY)
     @GET
@@ -100,80 +98,80 @@ public class Control {
         return root.toJson();
     }
 
-    @Path(ADMIN+ADD_FOODITEM)
-    @PUT
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String addFoodItem(
-            FoodItem pojo
-    ) {
-        DBDriver.getDBDriver().insert(FOOD_COLLECTION, pojo.getDocument());
+//    @Path(ADMIN+ADD_FOODITEM)
+//    @PUT
+//    @Produces("text/plain")
+//    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public String addFoodItem(
+//            FoodItem pojo
+//    ) {
+//        DBDriver.getDBDriver().insert(FOOD_COLLECTION, pojo.getDocument());
+//
+//        Document root = new Document("message", "food_item inserted");
+//        return root.toJson();
+//    }
+//
+//    @Path(ADMIN+ADD_DISH)
+//    @PUT
+//    @Produces("text/plain")
+//    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public String addDish(
+//            Dish pojo
+//    ) {
+//        DBDriver.getDBDriver().insert(DISH_COLLECTION, pojo.getDocument());
+//
+//        Document root = new Document("message", "dish inserted");
+//        return root.toJson();
+//    }
+//
+//    @Path(GET_FOODITEMS)
+//    @GET
+//    @Produces("text/plain")
+//    public String getFoodItems() {
+//        List<Document> docs = DBDriver.getDBDriver().selectAll(FOOD_COLLECTION);
+//        Document rootDoc = new Document(FOOD_COLLECTION, docs);
+//
+//        return rootDoc.toJson();
+//    }
+//
+//    @Path(SEARCH_FOODITEMS)
+//    @PUT
+//    @Produces("text/plain")
+//    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public String searchFoodItems(
+//            Document nameDoc
+//    ) {
+//        String name = nameDoc.getString("name");
+//        Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(FOOD_COLLECTION, name));
+//        return root.toJson();
+//    }
 
-        Document root = new Document("message", "food_item inserted");
-        return root.toJson();
-    }
+//    @Path(GET_DISHES)
+//    @GET
+//    @Produces("text/plain")
+//    public String getDishes() {
+//        List<Document> docs = DBDriver.getDBDriver().selectAll(DISH_COLLECTION);
+//        Document rootDoc = new Document(DISH_COLLECTION, docs);
+//
+//        return rootDoc.toJson();
+//    }
 
-    @Path(ADMIN+ADD_DISH)
-    @PUT
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String addDish(
-            Dish pojo
-    ) {
-        DBDriver.getDBDriver().insert(DISH_COLLECTION, pojo.getDocument());
+//    @Path(SEARCH_DISHES)
+//    @PUT
+//    @Produces("text/plain")
+//    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
+//    public String searchDishes(
+//            Document nameDoc
+//    ) {
+//        String name = nameDoc.getString("name");
+//        Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(DISH_COLLECTION, name));
+//        return root.toJson();
+//    }
 
-        Document root = new Document("message", "dish inserted");
-        return root.toJson();
-    }
-
-    @Path(GET_FOODITEMS)
-    @GET
-    @Produces("text/plain")
-    public String getFoodItems() {
-        List<Document> docs = DBDriver.getDBDriver().selectAll(FOOD_COLLECTION);
-        Document rootDoc = new Document(FOOD_COLLECTION, docs);
-
-        return rootDoc.toJson();
-    }
-
-    @Path(SEARCH_FOODITEMS)
-    @PUT
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String searchFoodItems(
-            Document nameDoc
-    ) {
-        String name = nameDoc.getString("name");
-        Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(FOOD_COLLECTION, name));
-        return root.toJson();
-    }
-
-    @Path(GET_DISHES)
-    @GET
-    @Produces("text/plain")
-    public String getDishes() {
-        List<Document> docs = DBDriver.getDBDriver().selectAll(DISH_COLLECTION);
-        Document rootDoc = new Document(DISH_COLLECTION, docs);
-
-        return rootDoc.toJson();
-    }
-
-    @Path(SEARCH_DISHES)
-    @PUT
-    @Produces("text/plain")
-    @Consumes(MediaType.APPLICATION_JSON + SEPARATOR + CHARSET)
-    public String searchDishes(
-            Document nameDoc
-    ) {
-        String name = nameDoc.getString("name");
-        Document root = new Document("found_items", DBDriver.getDBDriver().selectLike(DISH_COLLECTION, name));
-        return root.toJson();
-    }
-
-    @Path(ADMIN+FILL_URLS)
-    @GET
-    public void fillURLs() {
-        Engine.fillURLsFoodItems();
-        Engine.fillURLsDishes();
-    }
+//    @Path(ADMIN+FILL_URLS)
+//    @GET
+//    public void fillURLs() {
+//        Engine.fillURLsFoodItems();
+//        Engine.fillURLsDishes();
+//    }
 }

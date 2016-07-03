@@ -12,7 +12,7 @@ public abstract class Constants {
     public final static String RESOURCES_BUNDLE_PATH = "com.ufood.resources.";
     private final static Properties props = MyProperties.getProps();
 
-    public final static String DATABASE_NAME =      props.getProperty("database.name");
+    public final static String DB_NAME =      props.getProperty("database.name");
     public final static String FOOD_COLLECTION =    props.getProperty("food.collection");
     public final static String DISH_COLLECTION =    props.getProperty("dish.collection");
     public final static String MENU_COLLECTION =    props.getProperty("menu.collection");
