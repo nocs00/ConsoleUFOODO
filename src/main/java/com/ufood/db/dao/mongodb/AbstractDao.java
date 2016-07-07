@@ -13,6 +13,7 @@ public abstract class AbstractDao<T> implements AutoCloseable {
     private Datastore datastore;
     private MongoClient mongoClient;
 
+    protected abstract Class<T> getChildClass();
 
     public Datastore getDatastore() {
         if (datastore == null) {
@@ -31,9 +32,19 @@ public abstract class AbstractDao<T> implements AutoCloseable {
         return t;
     }
 
-    public abstract T getById(String objectId);
-    public abstract T getByPropertyValue(String property, String value);
-    public abstract void delete(T t);
+    public T getById(String objectId) {
+        return getDatastore().get(getChildClass(), new ObjectId(objectId));
+
+    }
+
+    public T getByPropertyValue(String property, String value) {
+        return getDatastore().find(getChildClass(), property, value).get();
+
+    }
+
+    public void delete(T t) {
+
+    }
 
     @Override
     public void close() throws Exception {

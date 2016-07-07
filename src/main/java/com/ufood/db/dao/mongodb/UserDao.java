@@ -9,17 +9,7 @@ import org.bson.types.ObjectId;
  */
 public class UserDao extends AbstractDao<User> {
     @Override
-    public User getById(String objectId) {
-        return getDatastore().get(User.class, new ObjectId(objectId));
-    }
-
-    @Override
-    public User getByPropertyValue(String property, String value) {
-        return getDatastore().find(User.class, property, value).get();
-    }
-
-    @Override
-    public void delete(User user) {
-
+    protected Class<User> getChildClass() {
+        return User.class;
     }
 }

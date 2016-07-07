@@ -9,17 +9,7 @@ import org.bson.types.ObjectId;
  */
 public class TaskDao extends AbstractDao<Task> {
     @Override
-    public Task getById(String objectId) {
-        return getDatastore().get(Task.class, new ObjectId(objectId));
-    }
-
-    @Override
-    public Task getByPropertyValue(String property, String value) {
-        return getDatastore().find(Task.class, property, value).get();
-    }
-
-    @Override
-    public void delete(Task task) {
-
+    protected Class<Task> getChildClass() {
+        return Task.class;
     }
 }

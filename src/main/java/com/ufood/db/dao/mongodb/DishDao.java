@@ -8,17 +8,7 @@ import org.bson.types.ObjectId;
  */
 public class DishDao extends AbstractDao<Dish> {
     @Override
-    public Dish getById(String objectId) {
-        return getDatastore().get(Dish.class, new ObjectId(objectId));
-    }
-
-    @Override
-    public Dish getByPropertyValue(String property, String value) {
-        return getDatastore().find(Dish.class, property, value).get();
-    }
-
-    @Override
-    public void delete(Dish dish) {
-
+    protected Class<Dish> getChildClass() {
+        return Dish.class;
     }
 }

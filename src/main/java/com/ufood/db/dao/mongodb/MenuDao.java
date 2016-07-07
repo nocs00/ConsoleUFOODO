@@ -9,18 +9,7 @@ import org.bson.types.ObjectId;
  */
 public class MenuDao extends AbstractDao<Menu> {
     @Override
-    public Menu getById(String objectId) {
-        return getDatastore().get(Menu.class, new ObjectId(objectId));
-    }
-
-    @Override
-    public Menu getByPropertyValue(String property, String value) {
-        return getDatastore().find(Menu.class, property, value).get();
-
-    }
-
-    @Override
-    public void delete(Menu menu) {
-
+    protected Class<Menu> getChildClass() {
+        return Menu.class;
     }
 }
