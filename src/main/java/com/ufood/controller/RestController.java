@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/rest/api")
 public class RestController {
-//    @RequestMapping("/")
-//    public String home(HttpServletRequest request, HttpServletResponse response) {
-//        return "redirect:/contacts";
-//    }
+    @RequestMapping("/")
+    public @ResponseBody String home(HttpServletRequest request, HttpServletResponse response) {
+        return "hello, ufoodo deployed";
+    }
 
     @RequestMapping(value = "/getCalculatedMenu", method= RequestMethod.GET)
     public String getCalculatedMenu(HttpServletRequest request, HttpServletResponse response) {
