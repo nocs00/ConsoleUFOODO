@@ -7,8 +7,8 @@ import java.util.List;
 
 @Entity
 public class Result extends AbstractEntity {
-    private List<Menu> menus;
     private Task task;
+    private List<Menu> menus;
 
     public List<Menu> getMenus() {
         return menus;

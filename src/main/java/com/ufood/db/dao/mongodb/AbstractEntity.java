@@ -12,7 +12,7 @@ public abstract class AbstractEntity {
 
     @Id
     @Property("id")
-    protected ObjectId id;
+    private ObjectId id;
 
     @Version
     @Property("version")
@@ -22,7 +22,7 @@ public abstract class AbstractEntity {
         super();
     }
 
-    public ObjectId getId() {
+    protected ObjectId getId() {
         return id;
     }
 
@@ -30,12 +30,11 @@ public abstract class AbstractEntity {
         this.id = id;
     }
 
-    public Long getVersion() {
+    protected Long getVersion() {
         return version;
     }
 
     public void setVersion(Long version) {
         this.version = version;
     }
-
 }
